@@ -1,0 +1,6 @@
+@extends('errors.layout')
+@section('title', 'Forbidden')
+@section('code', '403')
+@section('icon', 'fa-ban')
+@section('heading', 'Access Denied')
+@section('message', 'You do not have permission to view this resource.')

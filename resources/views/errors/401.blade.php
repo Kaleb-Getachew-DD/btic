@@ -1,0 +1,6 @@
+@extends('errors.layout')
+@section('title', 'Unauthorized')
+@section('code', '401')
+@section('icon', 'fa-lock')
+@section('heading', 'Unauthorized')
+@section('message', 'You must sign in to access this page.')

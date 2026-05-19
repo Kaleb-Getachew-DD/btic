@@ -1,0 +1,6 @@
+@extends('errors.layout')
+@section('title', 'Service Unavailable')
+@section('code', '503')
+@section('icon', 'fa-screwdriver-wrench')
+@section('heading', 'Under Maintenance')
+@section('message', 'The site is temporarily unavailable while we perform maintenance. Please check back soon.')

@@ -1,0 +1,6 @@
+@extends('errors.layout')
+@section('title', 'Server Error')
+@section('code', $exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface ? $exception->getStatusCode() : '500')
+@section('icon', 'fa-server')
+@section('heading', 'Server Error')
+@section('message', 'Something went wrong on our end. Please try again later.')

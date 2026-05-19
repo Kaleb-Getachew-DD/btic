@@ -1,0 +1,6 @@
+@extends('errors.layout')
+@section('title', 'Request Error')
+@section('code', $exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface ? $exception->getStatusCode() : '400')
+@section('icon', 'fa-circle-exclamation')
+@section('heading', 'Request Could Not Be Completed')
+@section('message', config('app.debug') && $exception->getMessage() ? $exception->getMessage() : 'The request could not be processed. Please check your input and try again.')
