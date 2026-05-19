@@ -79,6 +79,7 @@
             </div>
             <div style="display:flex;gap:10px;">
                 <button type="submit" class="btn btn-primary" style="flex:1;"><i class="fas fa-save"></i> Update</button>
+                </form>
                 <form method="POST" action="{{ route('admin.services.destroy',$service) }}" onsubmit="return confirm('Delete this service?')">
                     @csrf @method('DELETE')
                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
@@ -86,5 +87,4 @@
             </div>
         </div>
     </div>
-</form>
 @endsection

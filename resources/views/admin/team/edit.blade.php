@@ -113,6 +113,7 @@
                 <button type="submit" class="btn btn-primary" style="flex:1;">
                     <i class="fas fa-save"></i> Update
                 </button>
+                </form>
                 <form method="POST" action="{{ route('admin.team.destroy', $member) }}"
                     onsubmit="return confirm('Remove {{ $member->name }} from the team?')">
                     @csrf @method('DELETE')
@@ -121,5 +122,4 @@
             </div>
         </div>
     </div>
-</form>
 @endsection

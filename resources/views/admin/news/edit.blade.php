@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-
+            </form>
             <div style="display:flex;gap:10px;">
                 <button type="submit" class="btn btn-primary" style="flex:1;"><i class="fas fa-save"></i> Update</button>
                 <form method="POST" action="{{ route('admin.news.destroy', $news) }}" onsubmit="return confirm('Delete this article permanently?')">
@@ -129,5 +129,4 @@
             </div>
         </div>
     </div>
-</form>
 @endsection

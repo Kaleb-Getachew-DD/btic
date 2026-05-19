@@ -109,6 +109,7 @@
                 <button type="submit" class="btn btn-primary" style="flex:1;">
                     <i class="fas fa-save"></i> Update
                 </button>
+                </form>
                 <form method="POST" action="{{ route('admin.programs.destroy', $program) }}"
                     onsubmit="return confirm('Delete this program?')">
                     @csrf @method('DELETE')
@@ -117,5 +118,4 @@
             </div>
         </div>
     </div>
-</form>
 @endsection
