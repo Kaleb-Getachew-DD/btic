@@ -189,6 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTags();
   });
 
+  // ---- Icon Picker (programs & services) ----
+  document.querySelectorAll('[data-icon-picker]').forEach(initIconPicker);
+
 });
 
 // ============================================================
@@ -283,4 +286,73 @@ function initFormAutoSave(formId) {
 
   // Clear on submit
   form.addEventListener('submit', () => localStorage.removeItem(key));
+}
+
+function initIconPicker(root) {
+  const input   = root.querySelector('[data-icon-input]');
+  const preview = root.querySelector('[data-icon-preview] i');
+  const panel   = root.querySelector('[data-icon-picker-panel]');
+  const toggle  = root.querySelector('[data-icon-picker-toggle]');
+  const search  = root.querySelector('[data-icon-search]');
+  const options = root.querySelectorAll('.icon-picker-option');
+
+  if (!input || !preview) return;
+
+  const normalizeIcon = (value) => {
+    let icon = (value || '').trim().toLowerCase();
+    icon = icon.replace(/^(fas|far|fab)\s+/, '');
+    if (!icon) return 'fa-rocket';
+    if (!icon.startsWith('fa-')) icon = 'fa-' + icon.replace(/^fa-?/, '');
+    return icon;
+  };
+
+  const updatePreview = (icon) => {
+    const normalized = normalizeIcon(icon);
+    input.value = normalized;
+    preview.className = 'fas ' + normalized;
+    options.forEach((btn) => {
+      btn.classList.toggle('is-selected', btn.dataset.icon === normalized);
+    });
+  };
+
+  input.addEventListener('input', () => updatePreview(input.value));
+  input.addEventListener('blur', () => updatePreview(input.value));
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const open = panel.hasAttribute('hidden');
+      if (open) {
+        panel.removeAttribute('hidden');
+        toggle.innerHTML = '<i class="fas fa-times"></i> Close';
+        search?.focus();
+      } else {
+        panel.setAttribute('hidden', '');
+        toggle.innerHTML = '<i class="fas fa-icons"></i> Browse icons';
+      }
+    });
+  }
+
+  options.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      updatePreview(btn.dataset.icon);
+      if (panel && toggle) {
+        panel.setAttribute('hidden', '');
+        toggle.innerHTML = '<i class="fas fa-icons"></i> Browse icons';
+      }
+    });
+  });
+
+  if (search) {
+    search.addEventListener('input', () => {
+      const q = search.value.trim().toLowerCase();
+      options.forEach((btn) => {
+        const label = btn.dataset.label || '';
+        const icon  = btn.dataset.icon || '';
+        const match = !q || label.includes(q) || icon.includes(q);
+        btn.hidden = !match;
+      });
+    });
+  }
+
+  updatePreview(input.value);
 }

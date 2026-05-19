@@ -32,8 +32,7 @@
                         <input type="text" name="category" class="form-control" value="{{ old('category',$service->category) }}">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Icon</label>
-                        <input type="text" name="icon" class="form-control" value="{{ old('icon',$service->icon) }}">
+                        <x-admin.icon-picker name="icon" :value="old('icon', $service->icon ?? 'fa-star')" label="Icon" />
                     </div>
                     <div class="form-group">
                         <label class="form-label">Sort Order</label>

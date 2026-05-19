@@ -31,9 +31,7 @@
                                 value="{{ old('title', $program->title) }}" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Font Awesome Icon</label>
-                            <input type="text" name="icon" class="form-control"
-                                value="{{ old('icon', $program->icon) }}" placeholder="e.g. fa-rocket">
+                            <x-admin.icon-picker name="icon" :value="old('icon', $program->icon ?? 'fa-rocket')" label="Icon" />
                         </div>
                         <div class="form-group">
                             <label class="form-label">Duration</label>

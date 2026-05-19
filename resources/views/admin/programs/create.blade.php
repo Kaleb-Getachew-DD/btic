@@ -35,13 +35,7 @@
                             @error('title')<div class="form-error">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Font Awesome Icon</label>
-                            <input type="text" name="icon" class="form-control"
-                                value="{{ old('icon', 'fa-rocket') }}"
-                                placeholder="e.g. fa-rocket, fa-lightbulb">
-                            <div class="form-hint">
-                                Use <a href="https://fontawesome.com/icons" target="_blank" style="color:var(--crimson);">Font Awesome</a> class names
-                            </div>
+                            <x-admin.icon-picker name="icon" :value="old('icon', 'fa-rocket')" label="Icon" />
                         </div>
                         <div class="form-group">
                             <label class="form-label">Duration</label>

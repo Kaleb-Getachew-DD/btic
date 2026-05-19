@@ -35,9 +35,7 @@
                             value="{{ old('category') }}" placeholder="e.g. Advisory, Infrastructure">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Font Awesome Icon</label>
-                        <input type="text" name="icon" class="form-control"
-                            value="{{ old('icon','fa-star') }}" placeholder="e.g. fa-users, fa-coins">
+                        <x-admin.icon-picker name="icon" :value="old('icon', 'fa-star')" label="Icon" />
                     </div>
                     <div class="form-group">
                         <label class="form-label">Sort Order</label>
