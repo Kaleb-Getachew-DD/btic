@@ -5,7 +5,7 @@
             {{-- Brand --}}
             <div>
                 <div class="footer-brand-logo">
-                    <div class="footer-brand-box">B</div>
+                    <x-site-logo variant="footer" />
                     <div>
                         <div class="footer-brand-name">DDU BTIC</div>
                         <div class="footer-brand-sub">Incubation Center</div>

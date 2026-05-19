@@ -8,7 +8,8 @@
     <meta name="description" content="@yield('meta_description', 'Dire Dawa University Business and Technology Incubation Center — nurturing innovative startups across Ethiopia.')">
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+    @php $faviconUrl = \App\Models\Setting::assetUrl('site_favicon'); @endphp
+    <link rel="icon" href="{{ $faviconUrl ?? asset('images/favicon.ico') }}">
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -42,6 +43,9 @@
         </a>
         <a href="{{ route('contact.index') }}" class="mobile-nav-link">
             <i class="fas fa-envelope"></i> Contact
+        </a>
+        <a href="{{ route('apply.track') }}" class="mobile-nav-link">
+            <i class="fas fa-search"></i> Track Application
         </a>
         <div style="padding: 24px 16px;">
             <a href="{{ route('apply.create') }}" class="btn btn-primary" style="width:100%;justify-content:center;">

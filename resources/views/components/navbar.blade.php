@@ -1,7 +1,7 @@
 <nav class="navbar" id="mainNavbar">
     <div class="navbar-inner">
         <a href="{{ route('home') }}" class="navbar-brand">
-            <div class="navbar-brand-logo">B</div>
+            <x-site-logo variant="navbar" />
             <div class="navbar-brand-text">
                 <div class="brand-name">DDU BTIC</div>
                 <div class="brand-sub">Incubation Center</div>
@@ -15,6 +15,7 @@
             <li><a href="{{ route('startups.index') }}" class="nav-link">Startups</a></li>
             <li><a href="{{ route('news.index') }}" class="nav-link">News</a></li>
             <li><a href="{{ route('contact.index') }}" class="nav-link">Contact</a></li>
+            <li><a href="{{ route('apply.track') }}" class="nav-link">Track Application</a></li>
         </ul>
 
         <div class="navbar-cta">

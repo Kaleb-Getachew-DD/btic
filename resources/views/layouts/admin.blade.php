@@ -6,7 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') — DDU BTIC Admin</title>
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+    @php $faviconUrl = \App\Models\Setting::assetUrl('site_favicon'); @endphp
+    <link rel="icon" href="{{ $faviconUrl ?? asset('images/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     @stack('styles')

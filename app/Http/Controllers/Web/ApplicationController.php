@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\StoreApplicationRequest;
+use App\Http\Requests\Web\TrackApplicationRequest;
 use App\Models\Application;
 use App\Models\Cohort;
 use App\Models\Notification;
@@ -58,5 +59,42 @@ class ApplicationController extends Controller
         }
 
         return view('web.apply.success', compact('ref', 'name'));
+    }
+
+    public function track()
+    {
+        $reference = request()->query('ref')
+            ? strtoupper(trim(request()->query('ref')))
+            : old('reference_number');
+
+        $application = null;
+
+        if ($reference) {
+            $application = Application::with('cohort')
+                ->where('reference_number', $reference)
+                ->first();
+        }
+
+        return view('web.apply.track', compact('application', 'reference'));
+    }
+
+    public function lookup(TrackApplicationRequest $request)
+    {
+        $reference = $request->validated()['reference_number'];
+
+        $application = Application::with('cohort')
+            ->where('reference_number', $reference)
+            ->first();
+
+        if (! $application) {
+            return back()
+                ->withErrors(['reference_number' => 'No application found with that reference number. Please check and try again.'])
+                ->withInput();
+        }
+
+        return view('web.apply.track', [
+            'application' => $application,
+            'reference' => $reference,
+        ]);
     }
 }

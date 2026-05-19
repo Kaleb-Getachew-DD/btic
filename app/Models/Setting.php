@@ -40,6 +40,17 @@ class Setting extends Model
         return static::where('group', $group)->pluck('value', 'key')->toArray();
     }
 
+    public static function assetUrl(string $key): ?string
+    {
+        $path = static::get($key);
+
+        if (! $path || trim($path) === '') {
+            return null;
+        }
+
+        return asset('storage/'.ltrim($path, '/'));
+    }
+
     protected static function metaForKey(string $key): array
     {
         $labels = [

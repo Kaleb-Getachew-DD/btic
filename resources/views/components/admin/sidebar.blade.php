@@ -1,6 +1,6 @@
 <aside class="admin-sidebar" id="adminSidebar">
     <div class="sidebar-brand">
-        <div class="sidebar-brand-logo">B</div>
+        <x-site-logo variant="sidebar" />
         <div class="sidebar-brand-text">
             <div class="name">DDU BTIC</div>
             <div class="sub">Admin Panel</div>

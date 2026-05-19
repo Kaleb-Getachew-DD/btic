@@ -1525,3 +1525,25 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   color: var(--mid-gray);
   font-size: 0.8rem;
 }
+
+/* CMS-uploaded site logo */
+.site-logo-img {
+  object-fit: contain;
+  background: #fff;
+  padding: 4px;
+  display: block;
+  flex-shrink: 0;
+}
+img.navbar-brand-logo.site-logo-img,
+.site-logo-img--navbar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 15px rgba(140,29,53,0.2);
+}
+img.footer-brand-box.site-logo-img,
+.site-logo-img--footer {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+}

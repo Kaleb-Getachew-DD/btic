@@ -1188,3 +1188,25 @@ select.form-control { cursor: pointer; }
 
 .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* CMS-uploaded site logo (admin) */
+.site-logo-img {
+  object-fit: contain;
+  background: #fff;
+  padding: 4px;
+  display: block;
+  flex-shrink: 0;
+}
+img.sidebar-brand-logo.site-logo-img,
+.site-logo-img--sidebar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+img.admin-login-brand-logo.site-logo-img,
+.site-logo-img--login {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 32px;
+}

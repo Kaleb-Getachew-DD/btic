@@ -13,6 +13,10 @@
             </div>
             <h1 class="form-header-title">Apply for DDU BTIC Incubation</h1>
             <p class="form-header-sub">Complete the application below. We review all applications within 2 weeks and contact you by email.</p>
+            <p style="margin-top:12px;font-size:0.88rem;opacity:0.85;position:relative;z-index:1;">
+                Already applied?
+                <a href="{{ route('apply.track') }}" style="color:var(--gold-light);font-weight:600;text-decoration:underline;">Track your application status</a>
+            </p>
         </div>
 
         @if($cohorts->isEmpty())

@@ -28,7 +28,10 @@
                     <div style="font-size:1.2rem;font-weight:800;color:var(--text-dark);font-family:var(--font-mono);">{{ $ref }}</div>
                 </div>
             </div>
-            <p style="font-size:0.85rem;color:var(--text-body);">Save this reference number. You'll need it to follow up on your application status.</p>
+            <p style="font-size:0.85rem;color:var(--text-body);margin-bottom:16px;">Save this reference number. You'll need it to track your application status online.</p>
+            <a href="{{ route('apply.track', ['ref' => $ref]) }}" class="btn btn-primary" style="width:100%;justify-content:center;">
+                <i class="fas fa-search"></i> Track Application Status
+            </a>
         </div>
 
         <div style="background:white;border-radius:var(--radius-xl);padding:28px 32px;border:1px solid var(--light-gray);box-shadow:var(--shadow-md);margin-bottom:32px;text-align:left;">
@@ -57,7 +60,8 @@
         </div>
 
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-            <a href="{{ route('home') }}" class="btn btn-primary btn-lg"><i class="fas fa-home"></i> Back to Home</a>
+            <a href="{{ route('apply.track', ['ref' => $ref]) }}" class="btn btn-primary btn-lg"><i class="fas fa-search"></i> Track Status</a>
+            <a href="{{ route('home') }}" class="btn btn-outline btn-lg"><i class="fas fa-home"></i> Back to Home</a>
             <a href="{{ route('startups.index') }}" class="btn btn-outline btn-lg"><i class="fas fa-rocket"></i> Meet Our Startups</a>
         </div>
         <p style="margin-top:24px;font-size:0.82rem;color:var(--mid-gray);">

@@ -44,6 +44,8 @@ Route::get('/programs', [ProgramController::class, 'index'])->name('programs.ind
 Route::get('/apply', [ApplicationController::class, 'create'])->name('apply.create');
 Route::post('/apply', [ApplicationController::class, 'store'])->name('apply.store');
 Route::get('/apply/success', [ApplicationController::class, 'success'])->name('apply.success');
+Route::get('/apply/track', [ApplicationController::class, 'track'])->name('apply.track');
+Route::post('/apply/track', [ApplicationController::class, 'lookup'])->name('apply.track.lookup');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');

@@ -15,7 +15,7 @@
     {{-- Left Panel --}}
     <div class="admin-login-left">
         <div class="admin-login-brand">
-            <div class="admin-login-brand-logo">B</div>
+            <x-site-logo variant="login" />
             <h1 class="admin-login-brand-name">DDU BTIC<br>Admin Panel</h1>
             <p class="admin-login-brand-desc">
                 Manage applications, startups, news, and all content for Dire Dawa University's
