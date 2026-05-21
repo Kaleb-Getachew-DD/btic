@@ -7,7 +7,7 @@
 <section class="page-hero">
     <div class="container">
         <div class="page-hero-content">
-            <div class="section-tag" style="background:rgba(200,160,50,0.15);border-color:rgba(200,160,50,0.4);color:var(--gold-light);">
+            <div class="section-tag section-tag--on-dark">
                 <i class="fas fa-rocket"></i> Our Portfolio
             </div>
             <h1 class="page-hero-title">Startups Built at DDU BTIC</h1>

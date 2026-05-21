@@ -7,7 +7,7 @@
 <section class="page-hero">
     <div class="container">
         <div class="page-hero-content">
-            <div class="section-tag" style="background:rgba(200,160,50,0.15);border-color:rgba(200,160,50,0.4);color:var(--gold-light);">
+            <div class="section-tag section-tag--on-dark">
                 <i class="fas fa-graduation-cap"></i> Programs & Services
             </div>
             <h1 class="page-hero-title">Our Programs & Services</h1>
@@ -31,7 +31,7 @@
             <div style="display:grid;grid-template-columns:{{ $i % 2 === 0 ? '1fr 2fr' : '2fr 1fr' }};gap:40px;align-items:center;background:white;border:1px solid var(--light-gray);border-radius:var(--radius-xl);padding:40px;box-shadow:var(--shadow-sm);transition:var(--transition);" class="program-card">
                 @if($i % 2 === 0)
                 <div style="text-align:center;">
-                    <div style="width:120px;height:120px;background:linear-gradient(135deg,var(--crimson),var(--navy));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 20px 40px rgba(140,29,53,0.25);">
+                    <div style="width:120px;height:120px;background:linear-gradient(135deg,var(--crimson),var(--navy));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 20px 40px rgba(26,74,158,0.25);">
                         <i class="fas {{ $program->icon ?? 'fa-rocket' }}" style="font-size:3rem;color:white;"></i>
                     </div>
                     @if($program->duration)
@@ -66,7 +66,7 @@
                 </div>
                 @if($i % 2 !== 0)
                 <div style="text-align:center;">
-                    <div style="width:120px;height:120px;background:linear-gradient(135deg,var(--navy),var(--crimson));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 20px 40px rgba(28,40,84,0.25);">
+                    <div style="width:120px;height:120px;background:linear-gradient(135deg,var(--navy),var(--crimson));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 20px 40px rgba(26,74,158,0.25);">
                         <i class="fas {{ $program->icon ?? 'fa-rocket' }}" style="font-size:3rem;color:white;"></i>
                     </div>
                     @if($program->duration)

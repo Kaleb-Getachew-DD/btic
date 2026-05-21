@@ -6,7 +6,7 @@
 
 {{-- Hero --}}
 <div class="startup-hero">
-    <div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,rgba(140,29,53,0.3) 100%);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,rgba(26,74,158,0.3) 100%);"></div>
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:50px 50px;"></div>
     @if($startup->cover_image)
     <div style="position:absolute;inset:0;"><img src="{{ asset('storage/'.$startup->cover_image) }}" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.08;"></div>
@@ -29,7 +29,7 @@
             </div>
             <div>
                 @if($startup->is_featured)
-                    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,160,50,0.2);border:1px solid rgba(200,160,50,0.4);color:var(--gold-light);border-radius:100px;padding:5px 14px;font-size:0.75rem;font-weight:600;margin-bottom:12px;">
+                    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,222,0,0.2);border:1px solid rgba(255,222,0,0.4);color:var(--gold-light);border-radius:100px;padding:5px 14px;font-size:0.75rem;font-weight:600;margin-bottom:12px;">
                         <i class="fas fa-star"></i> Featured Startup
                     </div>
                 @endif

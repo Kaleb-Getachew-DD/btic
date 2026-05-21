@@ -75,7 +75,7 @@
                 @endforeach
                 <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;">
                     <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">20 spots per cohort</span>
-                    <a href="{{ route('apply.create') }}" style="font-size:0.75rem;color:#E8C04A;font-weight:600;">Apply →</a>
+                    <a href="{{ route('apply.create') }}" style="font-size:0.75rem;color:var(--gold);font-weight:600;">Apply →</a>
                 </div>
             </div>
         </div>

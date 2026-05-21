@@ -93,9 +93,9 @@
                 <div style="margin-top:32px;padding:20px 24px;background:var(--off-white);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
                     <span style="font-size:0.85rem;font-weight:600;color:var(--text-dark);">Share this article:</span>
                     <div style="display:flex;gap:10px;">
-                        <a href="https://twitter.com/share?text={{ urlencode($article->title) }}&url={{ urlencode(request()->url()) }}" target="_blank" class="team-social-link" style="background:#1DA1F2;color:white;"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(request()->url()) }}&title={{ urlencode($article->title) }}" target="_blank" class="team-social-link" style="background:#0A66C2;color:white;"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" target="_blank" class="team-social-link" style="background:#1877F2;color:white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/share?text={{ urlencode($article->title) }}&url={{ urlencode(request()->url()) }}" target="_blank" class="team-social-link" style="background:var(--blue);color:var(--white);"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(request()->url()) }}&title={{ urlencode($article->title) }}" target="_blank" class="team-social-link" style="background:var(--green);color:var(--white);"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" target="_blank" class="team-social-link" style="background:var(--brown);color:var(--white);"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
