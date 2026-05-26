@@ -164,7 +164,6 @@
                     </div>
                 </div>
                 @endforeach
-<<<<<<< HEAD
             </div>
 
             {{-- Carousel Controls --}}
@@ -193,11 +192,6 @@
                         <span>Official</span>
                         <span>Incubator</span>
                     </div>
-=======
-                <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;">
-                    <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">20 spots per cohort</span>
-                    <a href="{{ route('apply.create') }}" style="font-size:0.75rem;color:var(--gold);font-weight:600;">Apply →</a>
->>>>>>> 3d88840d8a8477fef523eb39fed6e2861139c5a1
                 </div>
             </div>
 
