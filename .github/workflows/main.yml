@@ -1,58 +1,31 @@
 name: Publish Website to CPanel
-
 on:
   push:
     branches:
       - main
-  workflow_dispatch: # Manual deploy from Actions tab → Run workflow
-
-concurrency:
-  group: ftp-deploy-main
-  cancel-in-progress: true
-
 jobs:
-  ftp-deploy:
-    name: Deploy to cPanel (FTP)
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    - uses: actions/checkout@v2.1.0
+      with:
+        fetch-depth: 2
+    - name: Build assets
+      run: npm install && npm run build
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: mbstring, xml, ctype, json, bcmath, fileinfo, pdo_mysql, openssl, tokenizer
-          tools: composer
-          coverage: none
+    - name: Install PHP and Composer
+      uses: shivammathur/setup-php@v2
+      with:
+          php-version: '8.2' # Adjust to match the PHP version used by your Laravel project
+          tools: 'composer'
 
-      - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+    - name: Install PHP dependencies
+      run: composer install --no-dev --optimize-autoloader
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.SERVER }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          protocol: ftp
-          server-dir: ${{ secrets.SERVER_DIR }}
-          log-level: verbose
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.github/**
-            **/node_modules/**
-            **/tests/**
-            **/.env
-            **/.env.*
-            **/storage/logs/**
-            **/storage/framework/cache/data/**
-            **/storage/framework/sessions/**
-            **/storage/framework/views/**
-            **/phpunit.xml
-            **/.phpunit.result.cache
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      with:
+        server: ${{ secrets.SERVER }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
