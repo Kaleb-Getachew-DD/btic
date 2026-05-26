@@ -3,84 +3,223 @@
 
 @section('content')
 
-{{-- ===== HERO ===== --}}
-<section class="hero">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-grid-lines"></div>
-    <div class="hero-content">
-        <div class="hero-text">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                Applications Open — Cohort 6
+    {{-- ===== HERO CAROUSEL — REPLACE everything from here down to the stats-bar section ===== --}}
+<section class="btic-hero" id="heroSection">
+
+    {{-- Background Layers --}}
+    <div class="btic-hero__bg">
+        <div class="btic-hero__bg-grid"></div>
+        <div class="btic-hero__bg-radial btic-hero__bg-radial--1"></div>
+        <div class="btic-hero__bg-radial btic-hero__bg-radial--2"></div>
+        <div class="btic-hero__bg-radial btic-hero__bg-radial--3"></div>
+        <div class="btic-hero__particles" id="heroParticles"></div>
+    </div>
+
+    {{-- Main Layout --}}
+    <div class="btic-hero__layout">
+
+        {{-- ===== LEFT: ARC TEXT PANEL ===== --}}
+        <div class="btic-hero__arc-wrap">
+            <div class="btic-hero__arc-panel">
+
+                {{-- Decorative arc border --}}
+                <div class="btic-hero__arc-border"></div>
+
+                {{-- Panel Content --}}
+                <div class="btic-hero__arc-inner">
+
+                    {{-- Top Badge --}}
+                    <div class="btic-hero__badge" id="heroSlideTag">
+                        <span class="btic-hero__badge-dot"></span>
+                        <span id="heroTagText">Pre-Incubation & Ideation</span>
+                    </div>
+
+                    {{-- Slide Counter --}}
+                    <div class="btic-hero__counter">
+                        <span class="btic-hero__counter-current" id="heroCounterCurrent">01</span>
+                        <span class="btic-hero__counter-sep"></span>
+                        <span class="btic-hero__counter-total">05</span>
+                    </div>
+
+                    {{-- Headline --}}
+                    <div class="btic-hero__headline-wrap">
+                        <h1 class="btic-hero__headline" id="heroHeadline">
+                            <span class="btic-hero__headline-line" id="heroLine1">Where Innovation</span>
+                            <span class="btic-hero__headline-line btic-hero__headline-line--gold" id="heroLine2">Meets Opportunity</span>
+                        </h1>
+                    </div>
+
+                    {{-- Description --}}
+                    <p class="btic-hero__desc" id="heroDesc">
+                        Dire Dawa University BTIC empowers bold entrepreneurs to validate ideas, build scalable products, and connect with investors — from first concept to market-ready launch.
+                    </p>
+
+                    {{-- CTA Buttons --}}
+                    <div class="btic-hero__actions">
+                        <a href="{{ route('apply.create') }}" class="btic-hero__btn btic-hero__btn--primary">
+                            <span>Apply for Cohort 6</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="{{ route('programs.index') }}" class="btic-hero__btn btic-hero__btn--ghost">
+                            <span>Explore Programs</span>
+                        </a>
+                    </div>
+
+                    {{-- Stats Row --}}
+                    <div class="btic-hero__stats">
+                        <div class="btic-hero__stat">
+                            <div class="btic-hero__stat-num" data-count="60" data-suffix="+">60+</div>
+                            <div class="btic-hero__stat-label">Startups</div>
+                        </div>
+                        <div class="btic-hero__stat-div"></div>
+                        <div class="btic-hero__stat">
+                            <div class="btic-hero__stat-num">6</div>
+                            <div class="btic-hero__stat-label">Cohorts</div>
+                        </div>
+                        <div class="btic-hero__stat-div"></div>
+                        <div class="btic-hero__stat">
+                            <div class="btic-hero__stat-num">$1M+</div>
+                            <div class="btic-hero__stat-label">Raised</div>
+                        </div>
+                        <div class="btic-hero__stat-div"></div>
+                        <div class="btic-hero__stat">
+                            <div class="btic-hero__stat-num" data-count="300" data-suffix="+">300+</div>
+                            <div class="btic-hero__stat-label">Jobs</div>
+                        </div>
+                    </div>
+
+                    {{-- Dot Navigation --}}
+                    <div class="btic-hero__dots" id="heroDots">
+                        <button class="btic-hero__dot btic-hero__dot--active" data-slide="0"></button>
+                        <button class="btic-hero__dot" data-slide="1"></button>
+                        <button class="btic-hero__dot" data-slide="2"></button>
+                        <button class="btic-hero__dot" data-slide="3"></button>
+                        <button class="btic-hero__dot" data-slide="4"></button>
+                    </div>
+                </div>
             </div>
 
-            <h1 class="hero-title">
-                Where Innovation<br>
-                Meets <span class="highlight">Opportunity</span>
-            </h1>
-
-            <p class="hero-subtitle">
-                Dire Dawa University's Business and Technology Incubation Center
-                nurtures Ethiopia's boldest startup founders — providing mentorship,
-                funding, workspace, and networks to build the future.
-            </p>
-
-            <div class="hero-actions">
-                <a href="{{ route('apply.create') }}" class="btn btn-gold btn-lg">
-                    <i class="fas fa-paper-plane"></i> Apply for Incubation
-                </a>
-                <a href="{{ route('startups.index') }}" class="btn btn-outline-white btn-lg">
-                    <i class="fas fa-arrow-right"></i> Explore Startups
-                </a>
-            </div>
-
-            <div class="hero-stats">
-                <div class="hero-stat-item">
-                    <div class="hero-stat-number" data-count="{{ preg_replace('/[^0-9]/', '', $stats['startups']) }}" data-suffix="+">{{ $stats['startups'] }}</div>
-                    <div class="hero-stat-label">Startups</div>
-                </div>
-                <div class="hero-stat-item">
-                    <div class="hero-stat-number" data-count="{{ $stats['cohorts'] }}">{{ $stats['cohorts'] }}</div>
-                    <div class="hero-stat-label">Cohorts</div>
-                </div>
-                <div class="hero-stat-item">
-                    <div class="hero-stat-number" data-count="{{ preg_replace('/[^0-9]/', '', $stats['jobs']) }}" data-suffix="+">{{ $stats['jobs'] }}</div>
-                    <div class="hero-stat-label">Jobs Created</div>
-                </div>
-                <div class="hero-stat-item">
-                    <div class="hero-stat-number">{{ $stats['funding'] }}</div>
-                    <div class="hero-stat-label">Funding Raised</div>
-                </div>
-            </div>
+            {{-- Arc Glow --}}
+            <div class="btic-hero__arc-glow"></div>
         </div>
 
-        <div class="hero-visual">
-            <div class="hero-3d-card animate-float">
-                <div class="hero-card-header">
-                    <div class="hero-card-icon"><i class="fas fa-rocket"></i></div>
-                    <div>
-                        <div class="hero-card-title">Active Incubatees</div>
-                        <div class="hero-card-sub">Cohort 6 — 2024/25</div>
+        {{-- ===== RIGHT: 3D IMAGE COVERFLOW ===== --}}
+        <div class="btic-hero__carousel-wrap">
+
+            {{-- Carousel Stage --}}
+            <div class="btic-hero__stage" id="heroStage">
+                @php
+                    $heroSlides = [
+                        [
+                            'img'     => 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=85&auto=format&fit=crop',
+                            'caption' => 'Collaborative Innovation',
+                            'sub'     => 'Teams building the future',
+                        ],
+                        [
+                            'img'     => 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&q=85&auto=format&fit=crop',
+                            'caption' => 'World-Class Workspace',
+                            'sub'     => 'State-of-the-art co-working facilities',
+                        ],
+                        [
+                            'img'     => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=85&auto=format&fit=crop',
+                            'caption' => 'Technology at the Core',
+                            'sub'     => 'Leveraging DDU research infrastructure',
+                        ],
+                        [
+                            'img'     => 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=85&auto=format&fit=crop',
+                            'caption' => 'Pitch to Investors',
+                            'sub'     => 'Demo Day & funding connections',
+                        ],
+                        [
+                            'img'     => 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=700&q=85&auto=format&fit=crop',
+                            'caption' => 'Expert Mentorship',
+                            'sub'     => '200+ mentors across industries',
+                        ],
+                    ];
+                @endphp
+
+                @foreach($heroSlides as $index => $slide)
+                <div class="btic-hero__card" data-index="{{ $index }}" data-pos="{{ $index === 0 ? '0' : $index }}">
+                    <div class="btic-hero__card-inner">
+                        {{-- Image --}}
+                        <img src="{{ $slide['img'] }}"
+                             alt="{{ $slide['caption'] }}"
+                             class="btic-hero__card-img"
+                             loading="{{ $index === 0 ? 'eager' : 'lazy' }}">
+
+                        {{-- Gradient Overlay --}}
+                        <div class="btic-hero__card-overlay"></div>
+
+                        {{-- Caption --}}
+                        <div class="btic-hero__card-caption">
+                            <div class="btic-hero__card-caption-title">{{ $slide['caption'] }}</div>
+                            <div class="btic-hero__card-caption-sub">{{ $slide['sub'] }}</div>
+                        </div>
+
+                        {{-- Corner Accent --}}
+                        <div class="btic-hero__card-corner btic-hero__card-corner--tl"></div>
+                        <div class="btic-hero__card-corner btic-hero__card-corner--br"></div>
                     </div>
-                </div>
-                @foreach($featuredStartups->take(4) as $startup)
-                <div class="startup-list-item">
-                    <div class="startup-avatar">{{ strtoupper(substr($startup->name, 0, 2)) }}</div>
-                    <div>
-                        <div class="startup-info-name">{{ $startup->name }}</div>
-                        <div class="startup-info-sector">{{ $startup->sector }}</div>
-                    </div>
-                    <span class="startup-badge-pill">{{ ucfirst($startup->stage) }}</span>
                 </div>
                 @endforeach
-                <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;">
-                    <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">20 spots per cohort</span>
-                    <a href="{{ route('apply.create') }}" style="font-size:0.75rem;color:#E8C04A;font-weight:600;">Apply →</a>
+            </div>
+
+            {{-- Carousel Controls --}}
+            <div class="btic-hero__carousel-controls">
+                <button class="btic-hero__nav btic-hero__nav--prev" id="heroPrev" aria-label="Previous slide">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="btic-hero__carousel-label">
+                    <span id="heroCarouselLabel">Collaborative Innovation</span>
+                </div>
+                <button class="btic-hero__nav btic-hero__nav--next" id="heroNext" aria-label="Next slide">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            {{-- Floating DDU Badge --}}
+            <div class="btic-hero__ddu-badge">
+                <div class="btic-hero__ddu-badge-ring"></div>
+                <div class="btic-hero__ddu-badge-inner">
+                    <div class="btic-hero__ddu-badge-logo">DDU</div>
+                    <div class="btic-hero__ddu-badge-text">
+                        <span>Official</span>
+                        <span>Incubator</span>
+                    </div>
                 </div>
             </div>
+
+            {{-- Floating Stat Cards --}}
+            <div class="btic-hero__float-card btic-hero__float-card--1">
+                <i class="fas fa-rocket"></i>
+                <div>
+                    <strong>Cohort 6 Open</strong>
+                    <span>20 spots available</span>
+                </div>
+            </div>
+            <!-- <div class="btic-hero__float-card btic-hero__float-card--2">
+                <i class="fas fa-trophy"></i>
+                <div>
+                    <strong>ETB 500K</strong>
+                    <span>Top performer grant</span>
+                </div>
+            </div> -->
         </div>
     </div>
+
+    {{-- Scroll Indicator --}}
+    <div class="btic-hero__scroll">
+        <div class="btic-hero__scroll-line"></div>
+        <span>Scroll</span>
+    </div>
 </section>
+    {{-- ===== END HERO — leave the stats-bar section below unchanged ===== --}}
 
 {{-- ===== STATS BAR ===== --}}
 <section class="stats-bar">
@@ -146,7 +285,7 @@
                 @endphp
                 @foreach($pillars as $pillar)
                 <div style="background:white;border-radius:var(--radius-lg);padding:24px;border:1px solid var(--light-gray);transition:var(--transition);" class="program-card">
-                    <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                    <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--navy-dark));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
                         <i class="fas {{ $pillar['icon'] }}" style="color:white;font-size:1.2rem;"></i>
                     </div>
                     <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;color:var(--text-dark);">{{ $pillar['title'] }}</h4>
@@ -220,7 +359,7 @@
                     @if($startup->cover_image)
                         <img src="{{ asset('storage/' . $startup->cover_image) }}" alt="{{ $startup->name }}">
                     @else
-                        <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--navy),var(--crimson));display:flex;align-items:center;justify-content:center;">
+                        <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--navy),var(--navy-dark));display:flex;align-items:center;justify-content:center;">
                             <i class="fas fa-rocket" style="font-size:3rem;color:rgba(255,255,255,0.2);"></i>
                         </div>
                     @endif
@@ -360,7 +499,7 @@
                             <div class="news-author-avatar">{{ strtoupper(substr($article->author->name ?? 'A', 0, 1)) }}</div>
                             <span class="news-author-name">{{ $article->author->name ?? 'BTIC Team' }}</span>
                         </div>
-                        <span style="font-size:0.8rem;color:var(--crimson);font-weight:600;">Read More →</span>
+                        <span style="font-size:0.8rem;color:var(--navy);font-weight:600;">Read More →</span>
                     </div>
                 </div>
             </a>

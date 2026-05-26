@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'ddu/btic-portal',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '436d6f48e55c61e4cb4bd93c4ff08c0ed8baa016',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -41,9 +41,9 @@
             ),
         ),
         'ddu/btic-portal' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '436d6f48e55c61e4cb4bd93c4ff08c0ed8baa016',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
