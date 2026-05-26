@@ -8,7 +8,7 @@
 
         {{-- Header --}}
         <div class="form-header">
-            <div class="section-tag" style="background:rgba(200,160,50,0.2);border-color:rgba(200,160,50,0.4);color:var(--gold-light);position:relative;z-index:1;">
+            <div class="section-tag section-tag--on-dark" style="position:relative;z-index:1;">
                 <i class="fas fa-paper-plane"></i> Cohort Application
             </div>
             <h1 class="form-header-title">Apply for DDU BTIC Incubation</h1>
@@ -268,8 +268,8 @@
                                 <label class="form-toggle" style="cursor:pointer;">
                                     <input type="hidden" name="has_funding" value="0">
                                     <input type="checkbox" name="has_funding" value="1" {{ old('has_funding') ? 'checked' : '' }} style="display:none;" id="hasFunding">
-                                    <div style="width:44px;height:24px;background:#CBD5E1;border-radius:100px;position:relative;cursor:pointer;transition:0.3s;" id="fundingToggleTrack">
-                                        <div style="width:18px;height:18px;background:white;border-radius:50%;position:absolute;top:3px;left:3px;transition:0.3s;box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div>
+                                    <div style="width:44px;height:24px;background:var(--tan);border-radius:100px;position:relative;cursor:pointer;transition:0.3s;" id="fundingToggleTrack">
+                                        <div style="width:18px;height:18px;background:var(--white);border-radius:50%;position:absolute;top:3px;left:3px;transition:0.3s;box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div>
                                     </div>
                                     <span style="font-size:0.9rem;font-weight:500;color:var(--text-dark);">Has existing funding?</span>
                                 </label>

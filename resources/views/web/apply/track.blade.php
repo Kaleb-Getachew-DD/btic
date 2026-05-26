@@ -7,7 +7,7 @@
     <div class="form-container" style="max-width:720px;">
 
         <div class="form-header" style="margin-bottom:28px;">
-            <div class="section-tag" style="background:rgba(200,160,50,0.2);border-color:rgba(200,160,50,0.4);color:var(--gold-light);position:relative;z-index:1;">
+            <div class="section-tag section-tag--on-dark" style="position:relative;z-index:1;">
                 <i class="fas fa-search"></i> Application Status
             </div>
             <h1 class="form-header-title" style="font-size:2rem;">Track Your Application</h1>
@@ -67,17 +67,17 @@
                     ];
                     $current = $application->status;
                     $statusColors = [
-                        'pending' => 'var(--warning)',
-                        'under_review' => '#0ea5e9',
-                        'shortlisted' => 'var(--navy)',
-                        'approved' => 'var(--success)',
-                        'rejected' => 'var(--crimson)',
-                        'withdrawn' => '#94a3b8',
+                        'pending' => 'var(--yellow)',
+                        'under_review' => 'var(--blue)',
+                        'shortlisted' => 'var(--green)',
+                        'approved' => 'var(--green)',
+                        'rejected' => 'var(--brown)',
+                        'withdrawn' => 'var(--tan)',
                     ];
                 @endphp
 
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap;">
-                    <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:700;font-size:0.9rem;background:{{ $statusColors[$current] ?? '#94a3b8' }}22;color:{{ $statusColors[$current] ?? '#64748b' }};">
+                    <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:700;font-size:0.9rem;background:{{ $statusColors[$current] ?? 'var(--tan)' }}22;color:{{ $statusColors[$current] ?? 'var(--brown)' }};">
                         <i class="fas {{ $statusSteps[$current]['icon'] ?? 'fa-circle' }}"></i>
                         {{ $application->status_label }}
                     </span>

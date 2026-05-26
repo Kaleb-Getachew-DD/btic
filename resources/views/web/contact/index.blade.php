@@ -5,7 +5,7 @@
 <section class="page-hero">
     <div class="container">
         <div class="page-hero-content">
-            <div class="section-tag" style="background:rgba(200,160,50,0.15);border-color:rgba(200,160,50,0.4);color:var(--gold-light);">
+            <div class="section-tag section-tag--on-dark">
                 <i class="fas fa-envelope"></i> Get In Touch
             </div>
             <h1 class="page-hero-title">Contact DDU BTIC</h1>
@@ -39,7 +39,7 @@
                     @endphp
                     @foreach($contacts as $c)
                     <div style="display:flex;gap:16px;align-items:flex-start;">
-                        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 20px rgba(140,29,53,0.2);">
+                        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 20px rgba(26,74,158,0.2);">
                             <i class="fas {{ $c['icon'] }}" style="color:white;font-size:1rem;"></i>
                         </div>
                         <div>
@@ -139,7 +139,7 @@
             @endphp
             @foreach($quickLinks as $ql)
             <div style="background:white;border:1px solid var(--light-gray);border-radius:var(--radius-lg);padding:28px;text-align:center;box-shadow:var(--shadow-sm);transition:var(--transition);" class="value-card">
-                <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 20px rgba(140,29,53,0.2);">
+                <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 20px rgba(26,74,158,0.2);">
                     <i class="fas {{ $ql['icon'] }}" style="color:white;font-size:1.25rem;"></i>
                 </div>
                 <h4 style="font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;">{{ $ql['title'] }}</h4>

@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --crimson: #8C1D35;
-            --gold: #C8A032;
-            --navy: #1C2854;
-            --text: #0F172A;
-            --muted: #64748B;
+            --blue: #1a4a9e;
+            --yellow: #ffde00;
+            --tan: #d7b58c;
+            --green: #2e8b57;
+            --brown: #a07844;
+            --white: #ffffff;
+            --black: #000000;
+            --crimson: var(--blue);
+            --gold: var(--yellow);
+            --navy: var(--blue);
+            --text: var(--black);
+            --muted: var(--brown);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             min-height: 100vh;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(145deg, #f8fafc 0%, #eef2f7 45%, #fff 100%);
+            background: linear-gradient(145deg, var(--tan) 0%, var(--white) 45%, var(--white) 100%);
             color: var(--text);
             display: flex;
             align-items: center;
@@ -27,16 +34,16 @@
         .error-card {
             max-width: 520px;
             width: 100%;
-            background: #fff;
+            background: var(--white);
             border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(28, 40, 84, 0.12);
+            box-shadow: 0 20px 60px rgba(26, 74, 158, 0.12);
             overflow: hidden;
             text-align: center;
         }
         .error-banner {
             background: linear-gradient(135deg, var(--navy) 0%, var(--crimson) 100%);
             padding: 36px 28px 28px;
-            color: #fff;
+            color: var(--white);
         }
         .error-code {
             font-size: 4rem;
@@ -85,17 +92,17 @@
         .btn:hover { transform: translateY(-1px); }
         .btn-primary {
             background: var(--crimson);
-            color: #fff;
-            box-shadow: 0 4px 14px rgba(140, 29, 53, 0.35);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(26, 74, 158, 0.35);
         }
         .btn-secondary {
-            background: #f1f5f9;
+            background: var(--tan);
             color: var(--navy);
         }
         .error-brand {
             margin-top: 20px;
             font-size: 0.75rem;
-            color: #94a3b8;
+            color: var(--brown);
             letter-spacing: 0.04em;
         }
     </style>

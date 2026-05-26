@@ -5,7 +5,7 @@
 @section('content')
 <div style="min-height:80vh;display:flex;align-items:center;justify-content:center;background:var(--off-white);padding:80px 24px;">
     <div style="max-width:600px;width:100%;text-align:center;">
-        <div style="width:100px;height:100px;background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 32px;box-shadow:0 20px 40px rgba(140,29,53,0.3);">
+        <div style="width:100px;height:100px;background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 32px;box-shadow:0 20px 40px rgba(26,74,158,0.3);">
             <i class="fas fa-check" style="font-size:2.5rem;color:white;"></i>
         </div>
         <div class="section-tag" style="justify-content:center;margin:0 auto 20px;">
