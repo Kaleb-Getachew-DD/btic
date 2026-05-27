@@ -7,7 +7,9 @@ use App\Http\Requests\Admin\ForgotPasswordRequest;
 use App\Models\PasswordResetRequest as PasswordResetRequestModel;
 use App\Models\User;
 use App\Notifications\AdminPasswordResetRequestMail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class ForgotPasswordController extends Controller
 {
@@ -34,7 +36,16 @@ class ForgotPasswordController extends Controller
             ->get();
 
         if ($admins->isNotEmpty()) {
-            Notification::send($admins, new AdminPasswordResetRequestMail($resetRequest));
+            try {
+                Notification::send($admins, new AdminPasswordResetRequestMail($resetRequest));
+            } catch (TransportExceptionInterface $e) {
+                // Don't break the forgot-password flow if SMTP is misconfigured.
+                Log::error('Failed to send admin password reset request email.', [
+                    'email' => $email,
+                    'password_reset_request_id' => $resetRequest->id,
+                    'exception' => $e->getMessage(),
+                ]);
+            }
         }
 
         // Always respond with success to avoid leaking whether an email exists.

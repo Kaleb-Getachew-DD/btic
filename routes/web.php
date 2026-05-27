@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PasswordResetRequestController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,10 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.guard', 'prevent.cach
         // Password reset requests
         Route::get('/password-reset-requests', [PasswordResetRequestController::class, 'index'])->name('password-resets.index');
         Route::patch('/password-reset-requests/{passwordResetRequest}/resolve', [PasswordResetRequestController::class, 'resolve'])->name('password-resets.resolve');
+        Route::patch('/password-reset-requests/{passwordResetRequest}/cancel', [PasswordResetRequestController::class, 'cancel'])->name('password-resets.cancel');
+
+        // Users (super admin only)
+        Route::resource('users', UserController::class)->except(['show']);
 
         // News
         Route::resource('news', AdminNewsController::class);

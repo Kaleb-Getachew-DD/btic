@@ -67,6 +67,12 @@
                 <i class="fas fa-user-circle sidebar-icon"></i>
                 My Profile
             </a>
+            @if(auth()->user()->isSuperAdmin())
+            <a href="{{ route('admin.users.index') }}" class="sidebar-link">
+                <i class="fas fa-users-cog sidebar-icon"></i>
+                User Management
+            </a>
+            @endif
             <a href="{{ route('admin.password-resets.index') }}" class="sidebar-link">
                 <i class="fas fa-key sidebar-icon"></i>
                 Password Requests

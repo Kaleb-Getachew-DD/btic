@@ -53,16 +53,27 @@
                     @endif
                 </td>
                 <td>
-                    @if($req->status === 'pending')
-                        <form method="POST" action="{{ route('admin.password-resets.resolve', $req) }}" style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;">
-                            @csrf
-                            @method('PATCH')
-                            <input type="password" name="password" class="admin-input" placeholder="New password" style="max-width:180px;" required>
-                            <input type="password" name="password_confirmation" class="admin-input" placeholder="Confirm" style="max-width:180px;" required>
-                            <button type="submit" class="btn btn-xs btn-success">
-                                <i class="fas fa-check"></i> Set Password
-                            </button>
-                        </form>
+                    @if($req->status === 'pending' && !$req->is_cancelled)
+                        <div style="display:flex;flex-direction:column;gap:8px;">
+                            <form method="POST" action="{{ route('admin.password-resets.resolve', $req) }}" style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;">
+                                @csrf
+                                @method('PATCH')
+                                <input type="password" name="password" class="admin-input" placeholder="New password" style="max-width:180px;" required>
+                                <input type="password" name="password_confirmation" class="admin-input" placeholder="Confirm" style="max-width:180px;" required>
+                                <button type="submit" class="btn btn-xs btn-success">
+                                    <i class="fas fa-check"></i> Set Password
+                                </button>
+                            </form>
+                            <form method="POST" action="{{ route('admin.password-resets.cancel', $req) }}" onsubmit="return confirm('Cancel this password request?')">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="btn btn-xs btn-secondary">
+                                    <i class="fas fa-ban"></i> Cancel Request
+                                </button>
+                            </form>
+                        </div>
+                    @elseif($req->is_cancelled)
+                        <span class="badge badge-secondary">Cancelled</span>
                     @else
                         <span class="muted">—</span>
                     @endif

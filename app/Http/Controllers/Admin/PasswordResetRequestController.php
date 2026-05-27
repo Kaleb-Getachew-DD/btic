@@ -12,7 +12,7 @@ class PasswordResetRequestController extends Controller
     public function index()
     {
         $requests = PasswordResetRequest::query()
-            ->with(['user', 'resolver'])
+            ->with(['user', 'resolver', 'canceller'])
             ->latest()
             ->paginate(15);
 
@@ -25,6 +25,9 @@ class PasswordResetRequestController extends Controller
     {
         if ($passwordResetRequest->status === 'resolved') {
             return back()->with('error', 'This reset request is already resolved.');
+        }
+        if ($passwordResetRequest->is_cancelled) {
+            return back()->with('error', 'This reset request was cancelled.');
         }
 
         $user = $passwordResetRequest->user;
@@ -43,6 +46,25 @@ class PasswordResetRequestController extends Controller
         ]);
 
         return back()->with('success', 'Password updated and request marked as resolved.');
+    }
+
+    public function cancel(PasswordResetRequest $passwordResetRequest)
+    {
+        if ($passwordResetRequest->status === 'resolved') {
+            return back()->with('error', 'This reset request is already resolved.');
+        }
+
+        if ($passwordResetRequest->is_cancelled) {
+            return back()->with('error', 'This reset request is already cancelled.');
+        }
+
+        $passwordResetRequest->update([
+            'is_cancelled' => true,
+            'cancelled_by' => auth()->id(),
+            'cancelled_at' => now(),
+        ]);
+
+        return back()->with('success', 'Reset request cancelled.');
     }
 }
 

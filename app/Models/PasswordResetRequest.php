@@ -11,11 +11,16 @@ class PasswordResetRequest extends Model
         'email',
         'user_id',
         'status',
+        'is_cancelled',
+        'cancelled_by',
+        'cancelled_at',
         'resolved_by',
         'resolved_at',
     ];
 
     protected $casts = [
+        'is_cancelled' => 'boolean',
+        'cancelled_at' => 'datetime',
         'resolved_at' => 'datetime',
     ];
 
@@ -27,6 +32,11 @@ class PasswordResetRequest extends Model
     public function resolver(): BelongsTo
     {
         return $this->belongsTo(User::class, 'resolved_by');
+    }
+
+    public function canceller(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'cancelled_by');
     }
 }
 
