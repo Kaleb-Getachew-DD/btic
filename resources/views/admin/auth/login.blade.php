@@ -119,6 +119,9 @@
                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
                         Remember me
                     </label>
+                    <a href="{{ route('admin.forgot-password') }}" style="font-size:0.75rem;color:#2563EB;font-weight:600;text-decoration:none;">
+                        Forgot password?
+                    </a>
                 </div>
 
                 <button type="submit" class="login-btn">

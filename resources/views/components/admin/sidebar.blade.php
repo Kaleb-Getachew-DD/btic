@@ -63,6 +63,18 @@
 
         <div class="sidebar-group">
             <div class="sidebar-group-label">System</div>
+            <a href="{{ route('admin.profile.edit') }}" class="sidebar-link">
+                <i class="fas fa-user-circle sidebar-icon"></i>
+                My Profile
+            </a>
+            <a href="{{ route('admin.password-resets.index') }}" class="sidebar-link">
+                <i class="fas fa-key sidebar-icon"></i>
+                Password Requests
+                @php $pendingResets = \App\Models\PasswordResetRequest::where('status','pending')->count(); @endphp
+                @if($pendingResets > 0)
+                    <span class="sidebar-badge">{{ $pendingResets }}</span>
+                @endif
+            </a>
             <a href="{{ route('admin.notifications.index') }}" class="sidebar-link">
                 <i class="fas fa-bell sidebar-icon"></i>
                 Notifications

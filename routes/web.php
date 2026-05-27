@@ -19,6 +19,9 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\CohortController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\ForgotPasswordController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\PasswordResetRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,12 +66,23 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.guard', 'prevent.cach
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest:admin');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'show'])->name('forgot-password')->middleware('guest:admin');
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('forgot-password.store')->middleware('guest:admin');
 
     // Protected admin area
     Route::middleware('admin')->group(function () {
 
         // Dashboard
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Profile
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::patch('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+
+        // Password reset requests
+        Route::get('/password-reset-requests', [PasswordResetRequestController::class, 'index'])->name('password-resets.index');
+        Route::patch('/password-reset-requests/{passwordResetRequest}/resolve', [PasswordResetRequestController::class, 'resolve'])->name('password-resets.resolve');
 
         // News
         Route::resource('news', AdminNewsController::class);
