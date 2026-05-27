@@ -111,5 +111,69 @@
     {{ $users->links() }}
 </div>
 @endif
+
+<div style="height:20px;"></div>
+
+<div class="page-header" style="margin-bottom:14px;">
+    <div>
+        <h2 class="page-title" style="font-size:1.15rem;">Deleted Users</h2>
+        <p class="page-subtitle">Restore soft-deleted accounts</p>
+    </div>
+</div>
+
+<div class="admin-table-wrapper">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Deleted At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($deletedUsers as $du)
+            <tr>
+                <td>
+                    <div class="td-avatar">
+                        <div class="td-avatar-placeholder">{{ strtoupper(substr($du->name, 0, 2)) }}</div>
+                        <div>
+                            <div class="td-name">{{ $du->name }}</div>
+                            <div class="td-sub">{{ $du->email }}</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="muted">{{ str_replace('_',' ', $du->role) }}</td>
+                <td class="muted">{{ $du->deleted_at?->format('M d, Y H:i') ?? '—' }}</td>
+                <td>
+                    <form method="POST" action="{{ route('admin.users.restore', $du->id) }}" onsubmit="return confirm('Restore this user?')">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="btn btn-xs btn-success">
+                            <i class="fas fa-undo"></i> Restore
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="4">
+                    <div class="empty-state" style="padding:40px 24px;">
+                        <div class="empty-state-icon"><i class="fas fa-user-slash"></i></div>
+                        <div class="empty-state-title">No deleted users</div>
+                        <div class="empty-state-desc">Soft-deleted accounts will appear here.</div>
+                    </div>
+                </td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
+
+@if($deletedUsers->hasPages())
+<div class="pagination-wrapper" style="margin-top:20px;">
+    {{ $deletedUsers->links() }}
+</div>
+@endif
 @endsection
 

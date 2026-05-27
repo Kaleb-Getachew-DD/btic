@@ -88,6 +88,7 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.guard', 'prevent.cach
 
         // Users (super admin only)
         Route::resource('users', UserController::class)->except(['show']);
+        Route::patch('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
 
         // News
         Route::resource('news', AdminNewsController::class);

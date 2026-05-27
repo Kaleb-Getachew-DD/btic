@@ -37,7 +37,12 @@ class UserController extends Controller
 
         $users = $query->paginate(15)->withQueryString();
 
-        return view('admin.users.index', compact('users'));
+        $deletedUsers = User::onlyTrashed()
+            ->orderByDesc('deleted_at')
+            ->paginate(10, ['*'], 'deleted_page')
+            ->withQueryString();
+
+        return view('admin.users.index', compact('users', 'deletedUsers'));
     }
 
     public function create()
@@ -96,6 +101,16 @@ class UserController extends Controller
         $user->delete();
 
         return back()->with('success', 'User deleted successfully.');
+    }
+
+    public function restore(int $user)
+    {
+        $this->ensureSuperAdmin();
+
+        $deletedUser = User::onlyTrashed()->findOrFail($user);
+        $deletedUser->restore();
+
+        return back()->with('success', 'User restored successfully.');
     }
 }
 

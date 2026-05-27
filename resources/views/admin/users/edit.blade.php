@@ -23,47 +23,60 @@
             @csrf
             @method('PUT')
 
-            <div class="admin-form-grid">
-                <div class="admin-form-group">
-                    <label class="admin-label">Full Name</label>
-                    <input type="text" name="name" value="{{ old('name', $user->name) }}" class="admin-input" required>
-                    @error('name')<div class="admin-help error">{{ $message }}</div>@enderror
+            <div class="admin-form-section" style="margin-bottom:0;">
+                <div class="admin-form-section-header">
+                    <div class="admin-form-section-icon"><i class="fas fa-user-edit"></i></div>
+                    <div class="admin-form-section-title">Account Details</div>
                 </div>
+                <div class="admin-form-section-body">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Full Name <span class="required">*</span></label>
+                            <input type="text" name="name" value="{{ old('name', $user->name) }}"
+                                   class="form-control @error('name') is-invalid @enderror" required>
+                            @error('name')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="admin-form-group">
-                    <label class="admin-label">Email</label>
-                    <input type="email" name="email" value="{{ old('email', $user->email) }}" class="admin-input" required>
-                    @error('email')<div class="admin-help error">{{ $message }}</div>@enderror
-                </div>
+                        <div class="form-group">
+                            <label class="form-label">Email <span class="required">*</span></label>
+                            <input type="email" name="email" value="{{ old('email', $user->email) }}"
+                                   class="form-control @error('email') is-invalid @enderror" required>
+                            @error('email')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="admin-form-group">
-                    <label class="admin-label">Role</label>
-                    <select name="role" class="admin-input" required>
-                        <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
-                        <option value="editor" {{ old('role', $user->role) === 'editor' ? 'selected' : '' }}>Editor</option>
-                        <option value="super_admin" {{ old('role', $user->role) === 'super_admin' ? 'selected' : '' }}>Super Admin</option>
-                    </select>
-                    @error('role')<div class="admin-help error">{{ $message }}</div>@enderror
-                </div>
+                        <div class="form-group">
+                            <label class="form-label">Role <span class="required">*</span></label>
+                            <select name="role" class="form-control @error('role') is-invalid @enderror" required>
+                                <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="editor" {{ old('role', $user->role) === 'editor' ? 'selected' : '' }}>Editor</option>
+                                <option value="super_admin" {{ old('role', $user->role) === 'super_admin' ? 'selected' : '' }}>Super Admin</option>
+                            </select>
+                            @error('role')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="admin-form-group">
-                    <label class="admin-label">Active</label>
-                    <select name="is_active" class="admin-input">
-                        <option value="1" {{ (string) old('is_active', $user->is_active ? '1' : '0') === '1' ? 'selected' : '' }}>Yes</option>
-                        <option value="0" {{ (string) old('is_active', $user->is_active ? '1' : '0') === '0' ? 'selected' : '' }}>No</option>
-                    </select>
-                    @error('is_active')<div class="admin-help error">{{ $message }}</div>@enderror
-                </div>
+                        <div class="form-group">
+                            <label class="form-label">Active</label>
+                            <select name="is_active" class="form-control @error('is_active') is-invalid @enderror">
+                                <option value="1" {{ (string) old('is_active', $user->is_active ? '1' : '0') === '1' ? 'selected' : '' }}>Yes</option>
+                                <option value="0" {{ (string) old('is_active', $user->is_active ? '1' : '0') === '0' ? 'selected' : '' }}>No</option>
+                            </select>
+                            @error('is_active')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="admin-form-group">
-                    <label class="admin-label">New Password (optional)</label>
-                    <input type="password" name="password" class="admin-input" autocomplete="new-password">
-                    @error('password')<div class="admin-help error">{{ $message }}</div>@enderror
-                </div>
+                        <div class="form-group">
+                            <label class="form-label">New Password (optional)</label>
+                            <input type="password" name="password"
+                                   class="form-control @error('password') is-invalid @enderror"
+                                   autocomplete="new-password">
+                            @error('password')<div class="form-error">{{ $message }}</div>@enderror
+                            <div class="form-hint">Leave blank to keep the current password</div>
+                        </div>
 
-                <div class="admin-form-group">
-                    <label class="admin-label">Confirm New Password</label>
-                    <input type="password" name="password_confirmation" class="admin-input" autocomplete="new-password">
+                        <div class="form-group">
+                            <label class="form-label">Confirm New Password</label>
+                            <input type="password" name="password_confirmation" class="form-control" autocomplete="new-password">
+                        </div>
+                    </div>
                 </div>
             </div>
 

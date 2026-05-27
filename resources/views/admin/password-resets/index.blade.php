@@ -58,8 +58,8 @@
                             <form method="POST" action="{{ route('admin.password-resets.resolve', $req) }}" style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;">
                                 @csrf
                                 @method('PATCH')
-                                <input type="password" name="password" class="admin-input" placeholder="New password" style="max-width:180px;" required>
-                                <input type="password" name="password_confirmation" class="admin-input" placeholder="Confirm" style="max-width:180px;" required>
+                                <input type="password" name="password" class="form-control" placeholder="New password" style="max-width:180px;" required>
+                                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm" style="max-width:180px;" required>
                                 <button type="submit" class="btn btn-xs btn-success">
                                     <i class="fas fa-check"></i> Set Password
                                 </button>
