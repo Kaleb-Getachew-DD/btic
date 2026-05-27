@@ -65,6 +65,83 @@
                             <label class="form-label">Hero Subtitle</label>
                             <textarea name="hero_subtitle" class="form-control" rows="3">{{ $settings['hero_subtitle']->value ?? '' }}</textarea>
                         </div>
+
+                        @php
+                            $slidesRaw = $settings['hero_slides']->value ?? '[]';
+                            $slides = json_decode($slidesRaw, true);
+                            if (!is_array($slides)) $slides = [];
+                            $maxSlides = 5;
+                            for ($i = 0; $i < $maxSlides; $i++) {
+                                if (!isset($slides[$i])) $slides[$i] = [];
+                            }
+                        @endphp
+
+                        <div style="height:10px;"></div>
+                        <div class="detail-section-title">Slides</div>
+                        <div class="form-hint" style="margin-bottom:12px;">
+                            Configure the hero carousel slides (text + image). Leave a slide empty to ignore it.
+                        </div>
+
+                        @foreach($slides as $i => $slide)
+                            @if($i >= $maxSlides) @break @endif
+                            <div class="admin-form-section" style="margin-bottom:16px;">
+                                <div class="admin-form-section-header">
+                                    <div class="admin-form-section-icon"><i class="fas fa-images"></i></div>
+                                    <div class="admin-form-section-title">Slide {{ $i + 1 }}</div>
+                                </div>
+                                <div class="admin-form-section-body">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label class="form-label">Tag</label>
+                                            <input type="text" name="hero_slides[{{ $i }}][tag]" class="form-control" value="{{ $slide['tag'] ?? '' }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Label</label>
+                                            <input type="text" name="hero_slides[{{ $i }}][label]" class="form-control" value="{{ $slide['label'] ?? '' }}">
+                                            <div class="form-hint">Shown under the carousel controls</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Headline Line 1</label>
+                                            <input type="text" name="hero_slides[{{ $i }}][line1]" class="form-control" value="{{ $slide['line1'] ?? '' }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Headline Line 2</label>
+                                            <input type="text" name="hero_slides[{{ $i }}][line2]" class="form-control" value="{{ $slide['line2'] ?? '' }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Card Caption</label>
+                                            <input type="text" name="hero_slides[{{ $i }}][caption]" class="form-control" value="{{ $slide['caption'] ?? '' }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Card Subtitle</label>
+                                            <input type="text" name="hero_slides[{{ $i }}][sub]" class="form-control" value="{{ $slide['sub'] ?? '' }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="hero_slides[{{ $i }}][desc]" class="form-control" rows="3">{{ $slide['desc'] ?? '' }}</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Slide Image</label>
+                                        @php
+                                            $img = $slide['img'] ?? null;
+                                            $preview = null;
+                                            if (is_string($img) && $img !== '') {
+                                                $preview = str_starts_with($img, 'http') ? $img : asset('storage/'.ltrim($img,'/'));
+                                            }
+                                        @endphp
+                                        @if($preview)
+                                            <img src="{{ $preview }}" alt="" style="height:90px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px;object-fit:cover;">
+                                        @endif
+                                        <input type="file" name="hero_slides_images[{{ $i }}]" class="form-control" accept="image/*">
+                                        <input type="hidden" name="hero_slides[{{ $i }}][img]" value="{{ $img ?? '' }}">
+                                        <div class="form-hint">Upload a new image to replace the current one</div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div style="margin-top:16px;"><button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button></div>

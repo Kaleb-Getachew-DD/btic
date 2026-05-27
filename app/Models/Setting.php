@@ -68,6 +68,7 @@ class Setting extends Model
             'youtube_url' => 'YouTube URL',
             'hero_title' => 'Hero Title',
             'hero_subtitle' => 'Hero Subtitle',
+            'hero_slides' => 'Hero Slides',
             'about_short' => 'About Short',
             'mission_statement' => 'Mission Statement',
             'vision_statement' => 'Vision Statement',
@@ -82,6 +83,7 @@ class Setting extends Model
         $type = match (true) {
             in_array($key, ['site_logo', 'site_favicon'], true) => 'image',
             in_array($key, ['site_description', 'contact_address', 'hero_subtitle', 'mission_statement', 'vision_statement', 'about_short'], true) => 'textarea',
+            in_array($key, ['hero_slides'], true) => 'json',
             default => 'text',
         };
 

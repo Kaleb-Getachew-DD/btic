@@ -60,9 +60,9 @@
                         @endforeach
                     </div>
                     @endif
-                    <a href="{{ route('apply.create') }}" class="btn btn-primary" style="margin-top:20px;">
+                    <!-- <a href="{{ route('apply.create') }}" class="btn btn-primary" style="margin-top:20px;">
                         <i class="fas fa-paper-plane"></i> Apply to this Program
-                    </a>
+                    </a> -->
                 </div>
                 @if($i % 2 !== 0)
                 <div class="program-row-icon" style="text-align:center;">

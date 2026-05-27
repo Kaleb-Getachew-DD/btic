@@ -4,48 +4,61 @@ window.BticInit.initHeroCarousel = function initHeroCarousel() {
   const stage = document.getElementById('heroStage');
   if (!stage) return;
 
-  const slides = [
-    {
-      tag: 'Pre-Incubation & Ideation',
-      num: '01',
-      line1: 'Where Innovation',
-      line2: 'Meets Opportunity',
-      desc: 'DDU BTIC empowers bold entrepreneurs to validate ideas, build scalable products, and connect with investors — from first concept to market-ready launch.',
-      label: 'Collaborative Innovation',
-    },
-    {
-      tag: 'Core Incubation Program',
-      num: '02',
-      line1: "Empowering Tomorrow's",
-      line2: 'Entrepreneurs',
-      desc: 'Our 6-month core incubation program provides co-working space, expert mentorship, legal guidance, and direct funding pathways for high-potential startups.',
-      label: 'World-Class Workspace',
-    },
-    {
-      tag: 'Technology & R&D Access',
-      num: '03',
-      line1: 'Technology-Driven',
-      line2: 'Transformation',
-      desc: "Leverage Dire Dawa University's research infrastructure, cloud computing credits, software licenses, and academic expertise to build better products faster.",
-      label: 'Technology at the Core',
-    },
-    {
-      tag: 'Investment & Market Access',
-      num: '04',
-      line1: 'Connecting Ideas',
-      line2: 'to Capital',
-      desc: 'Access our network of angel investors, venture capital firms, and Demo Day platforms. Our alumni have raised over $1M USD in cumulative funding.',
-      label: 'Pitch to Investors',
-    },
-    {
-      tag: 'Mentorship & Growth',
-      num: '05',
-      line1: "Building East Africa's",
-      line2: 'Future Leaders',
-      desc: 'Join 200+ mentors, 60+ successful alumni startups, and a thriving community of founders building solutions that serve Ethiopia and beyond.',
-      label: 'Expert Mentorship',
-    },
-  ];
+  let slides = [];
+  try {
+    if (stage.dataset && stage.dataset.slides) {
+      slides = JSON.parse(stage.dataset.slides);
+    } else if (window.BTIC_HERO_SLIDES) {
+      slides = window.BTIC_HERO_SLIDES;
+    }
+  } catch (e) {
+    slides = [];
+  }
+
+  if (!Array.isArray(slides) || slides.length === 0) {
+    slides = [
+      {
+        tag: 'Pre-Incubation & Ideation',
+        num: '01',
+        line1: 'Where Innovation',
+        line2: 'Meets Opportunity',
+        desc: 'DDU BTIC empowers bold entrepreneurs to validate ideas, build scalable products, and connect with investors — from first concept to market-ready launch.',
+        label: 'Collaborative Innovation',
+      },
+      {
+        tag: 'Core Incubation Program',
+        num: '02',
+        line1: "Empowering Tomorrow's",
+        line2: 'Entrepreneurs',
+        desc: 'Our 6-month core incubation program provides co-working space, expert mentorship, legal guidance, and direct funding pathways for high-potential startups.',
+        label: 'World-Class Workspace',
+      },
+      {
+        tag: 'Technology & R&D Access',
+        num: '03',
+        line1: 'Technology-Driven',
+        line2: 'Transformation',
+        desc: "Leverage Dire Dawa University's research infrastructure, cloud computing credits, software licenses, and academic expertise to build better products faster.",
+        label: 'Technology at the Core',
+      },
+      {
+        tag: 'Investment & Market Access',
+        num: '04',
+        line1: 'Connecting Ideas',
+        line2: 'to Capital',
+        desc: 'Access our network of angel investors, venture capital firms, and Demo Day platforms. Our alumni have raised over $1M USD in cumulative funding.',
+        label: 'Pitch to Investors',
+      },
+      {
+        tag: 'Mentorship & Growth',
+        num: '05',
+        line1: "Building East Africa's",
+        line2: 'Future Leaders',
+        desc: 'Join 200+ mentors, 60+ successful alumni startups, and a thriving community of founders building solutions that serve Ethiopia and beyond.',
+        label: 'Expert Mentorship',
+      },
+    ];
+  }
 
   const hero = document.getElementById('heroSection');
   const tagEl = document.getElementById('heroTagText');
@@ -58,6 +71,7 @@ window.BticInit.initHeroCarousel = function initHeroCarousel() {
   const nextBtn = document.getElementById('heroNext');
   const labelEl = document.getElementById('heroCarouselLabel');
   const particles = document.getElementById('heroParticles');
+  const totalEl = document.getElementById('heroCounterTotal');
 
   const cards = Array.from(stage.querySelectorAll('.btic-hero__card'));
   const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.btic-hero__dot')) : [];
@@ -97,6 +111,7 @@ window.BticInit.initHeroCarousel = function initHeroCarousel() {
     if (tagEl) tagEl.textContent = data.tag;
     if (counterEl) counterEl.textContent = data.num;
     if (labelEl) labelEl.textContent = data.label;
+    if (totalEl) totalEl.textContent = String(totalSlides).padStart(2, '0');
 
     if (line1El && line2El) {
       line1El.classList.add('is-exiting');

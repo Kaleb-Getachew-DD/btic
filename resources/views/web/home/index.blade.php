@@ -4,6 +4,106 @@
 @section('content')
 
     {{-- ===== HERO CAROUSEL — REPLACE everything from here down to the stats-bar section ===== --}}
+@php
+    $heroSlidesSettingRaw = \App\Models\Setting::get('hero_slides');
+    $heroSlidesSetting = [];
+    try {
+        $decoded = is_string($heroSlidesSettingRaw) ? json_decode($heroSlidesSettingRaw, true) : $heroSlidesSettingRaw;
+        if (is_array($decoded)) $heroSlidesSetting = $decoded;
+    } catch (\Throwable $e) {
+        $heroSlidesSetting = [];
+    }
+
+    $defaultHeroSlides = [
+        [
+            'img' => 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=85&auto=format&fit=crop',
+            'caption' => 'Collaborative Innovation',
+            'sub' => 'Teams building the future',
+            'tag' => 'Pre-Incubation & Ideation',
+            'line1' => 'Where Innovation',
+            'line2' => 'Meets Opportunity',
+            'desc' => 'Dire Dawa University BTIC empowers bold entrepreneurs to validate ideas, build scalable products, and connect with investors — from first concept to market-ready launch.',
+            'label' => 'Collaborative Innovation',
+        ],
+        [
+            'img' => 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&q=85&auto=format&fit=crop',
+            'caption' => 'World-Class Workspace',
+            'sub' => 'State-of-the-art co-working facilities',
+            'tag' => 'Core Incubation Program',
+            'line1' => "Empowering Tomorrow's",
+            'line2' => 'Entrepreneurs',
+            'desc' => 'Our 6-month core incubation program provides co-working space, expert mentorship, legal guidance, and direct funding pathways for high-potential startups.',
+            'label' => 'World-Class Workspace',
+        ],
+        [
+            'img' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=85&auto=format&fit=crop',
+            'caption' => 'Technology at the Core',
+            'sub' => 'Leveraging DDU research infrastructure',
+            'tag' => 'Technology & R&D Access',
+            'line1' => 'Technology-Driven',
+            'line2' => 'Transformation',
+            'desc' => "Leverage Dire Dawa University's research infrastructure, cloud computing credits, software licenses, and academic expertise to build better products faster.",
+            'label' => 'Technology at the Core',
+        ],
+        [
+            'img' => 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=85&auto=format&fit=crop',
+            'caption' => 'Pitch to Investors',
+            'sub' => 'Demo Day & funding connections',
+            'tag' => 'Investment & Market Access',
+            'line1' => 'Connecting Ideas',
+            'line2' => 'to Capital',
+            'desc' => 'Access our network of angel investors, venture capital firms, and Demo Day platforms. Our alumni have raised over $1M USD in cumulative funding.',
+            'label' => 'Pitch to Investors',
+        ],
+        [
+            'img' => 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=700&q=85&auto=format&fit=crop',
+            'caption' => 'Expert Mentorship',
+            'sub' => '200+ mentors across industries',
+            'tag' => 'Mentorship & Growth',
+            'line1' => "Building East Africa's",
+            'line2' => 'Future Leaders',
+            'desc' => 'Join 200+ mentors, 60+ successful alumni startups, and a thriving community of founders building solutions that serve Ethiopia and beyond.',
+            'label' => 'Expert Mentorship',
+        ],
+    ];
+
+    $slides = $heroSlidesSetting;
+    if (!is_array($slides) || count($slides) === 0) $slides = $defaultHeroSlides;
+
+    // Normalize + filter
+    $slides = array_values(array_filter(array_map(function ($s) {
+        if (!is_array($s)) return null;
+        $img = $s['img'] ?? null;
+        if (is_string($img) && !str_starts_with($img, 'http') && !str_starts_with($img, '/')) {
+            $img = asset('storage/' . ltrim($img, '/'));
+        }
+        return [
+            'img' => $img,
+            'caption' => $s['caption'] ?? ($s['label'] ?? ''),
+            'sub' => $s['sub'] ?? '',
+            'tag' => $s['tag'] ?? '',
+            'line1' => $s['line1'] ?? '',
+            'line2' => $s['line2'] ?? '',
+            'desc' => $s['desc'] ?? '',
+            'label' => $s['label'] ?? ($s['caption'] ?? ''),
+        ];
+    }, $slides), fn($s) => $s && ($s['img'] || $s['caption'])));
+
+    if (count($slides) === 0) $slides = $defaultHeroSlides;
+
+    $firstSlide = $slides[0];
+    $slidesForJs = array_map(function ($s, $i) {
+        return [
+            'tag' => $s['tag'],
+            'num' => str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT),
+            'line1' => $s['line1'],
+            'line2' => $s['line2'],
+            'desc' => $s['desc'],
+            'label' => $s['label'],
+        ];
+    }, $slides, array_keys($slides));
+@endphp
+
 <section class="btic-hero" id="heroSection">
 
     {{-- Background Layers --}}
@@ -31,28 +131,26 @@
                     {{-- Top Badge --}}
                     <div class="btic-hero__badge" id="heroSlideTag">
                         <span class="btic-hero__badge-dot"></span>
-                        <span id="heroTagText">Pre-Incubation & Ideation</span>
+                        <span id="heroTagText">{{ $firstSlide['tag'] }}</span>
                     </div>
 
                     {{-- Slide Counter --}}
                     <div class="btic-hero__counter">
                         <span class="btic-hero__counter-current" id="heroCounterCurrent">01</span>
                         <span class="btic-hero__counter-sep"></span>
-                        <span class="btic-hero__counter-total">05</span>
+                        <span class="btic-hero__counter-total" id="heroCounterTotal">{{ str_pad((string) count($slides), 2, '0', STR_PAD_LEFT) }}</span>
                     </div>
 
                     {{-- Headline --}}
                     <div class="btic-hero__headline-wrap">
                         <h1 class="btic-hero__headline" id="heroHeadline">
-                            <span class="btic-hero__headline-line" id="heroLine1">Where Innovation</span>
-                            <span class="btic-hero__headline-line btic-hero__headline-line--gold" id="heroLine2">Meets Opportunity</span>
+                            <span class="btic-hero__headline-line" id="heroLine1">{{ $firstSlide['line1'] }}</span>
+                            <span class="btic-hero__headline-line btic-hero__headline-line--gold" id="heroLine2">{{ $firstSlide['line2'] }}</span>
                         </h1>
                     </div>
 
                     {{-- Description --}}
-                    <p class="btic-hero__desc" id="heroDesc">
-                        Dire Dawa University BTIC empowers bold entrepreneurs to validate ideas, build scalable products, and connect with investors — from first concept to market-ready launch.
-                    </p>
+                    <p class="btic-hero__desc" id="heroDesc">{{ $firstSlide['desc'] }}</p>
 
                     {{-- CTA Buttons --}}
                     <div class="btic-hero__actions">
@@ -92,11 +190,9 @@
 
                     {{-- Dot Navigation --}}
                     <div class="btic-hero__dots" id="heroDots">
-                        <button class="btic-hero__dot btic-hero__dot--active" data-slide="0"></button>
-                        <button class="btic-hero__dot" data-slide="1"></button>
-                        <button class="btic-hero__dot" data-slide="2"></button>
-                        <button class="btic-hero__dot" data-slide="3"></button>
-                        <button class="btic-hero__dot" data-slide="4"></button>
+                        @foreach($slides as $index => $slide)
+                            <button class="btic-hero__dot {{ $index === 0 ? 'btic-hero__dot--active' : '' }}" data-slide="{{ $index }}"></button>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -109,38 +205,8 @@
         <div class="btic-hero__carousel-wrap">
 
             {{-- Carousel Stage --}}
-            <div class="btic-hero__stage" id="heroStage">
-                @php
-                    $heroSlides = [
-                        [
-                            'img'     => 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=85&auto=format&fit=crop',
-                            'caption' => 'Collaborative Innovation',
-                            'sub'     => 'Teams building the future',
-                        ],
-                        [
-                            'img'     => 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&q=85&auto=format&fit=crop',
-                            'caption' => 'World-Class Workspace',
-                            'sub'     => 'State-of-the-art co-working facilities',
-                        ],
-                        [
-                            'img'     => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=85&auto=format&fit=crop',
-                            'caption' => 'Technology at the Core',
-                            'sub'     => 'Leveraging DDU research infrastructure',
-                        ],
-                        [
-                            'img'     => 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=85&auto=format&fit=crop',
-                            'caption' => 'Pitch to Investors',
-                            'sub'     => 'Demo Day & funding connections',
-                        ],
-                        [
-                            'img'     => 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=700&q=85&auto=format&fit=crop',
-                            'caption' => 'Expert Mentorship',
-                            'sub'     => '200+ mentors across industries',
-                        ],
-                    ];
-                @endphp
-
-                @foreach($heroSlides as $index => $slide)
+            <div class="btic-hero__stage" id="heroStage" data-slides='@json($slidesForJs)'>
+                @foreach($slides as $index => $slide)
                 <div class="btic-hero__card" data-index="{{ $index }}" data-pos="{{ $index === 0 ? '0' : $index }}">
                     <div class="btic-hero__card-inner">
                         {{-- Image --}}
@@ -174,7 +240,7 @@
                     </svg>
                 </button>
                 <div class="btic-hero__carousel-label">
-                    <span id="heroCarouselLabel">Collaborative Innovation</span>
+                    <span id="heroCarouselLabel">{{ $firstSlide['label'] }}</span>
                 </div>
                 <button class="btic-hero__nav btic-hero__nav--next" id="heroNext" aria-label="Next slide">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
