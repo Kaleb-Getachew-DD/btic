@@ -1307,30 +1307,6 @@ textarea.form-control { resize: vertical; min-height: 100px; }
 .cohort-open-banner-text .sub { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
 
 /* ============================================================
-   PAGE LAYOUT HELPERS
-   ============================================================ */
-.home-about-grid,
-.about-story-grid,
-.contact-main-grid,
-.news-featured-grid,
-.article-layout,
-.startup-main-grid {
-  width: 100%;
-}
-.home-about-pillars,
-.about-story-stats,
-.contact-quick-links,
-.track-meta-grid {
-  width: 100%;
-}
-.program-row-benefits {
-  width: 100%;
-}
-.startup-related-item {
-  text-decoration: none;
-}
-
-/* ============================================================
    ANIMATIONS
    ============================================================ */
 @keyframes pulse {
@@ -1353,103 +1329,6 @@ textarea.form-control { resize: vertical; min-height: 100px; }
 .animate-fadeInUp { animation: fadeInUp 0.6s ease forwards; }
 .animate-fadeInLeft { animation: fadeInLeft 0.6s ease forwards; }
 .animate-float { animation: float 4s ease-in-out infinite; }
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 1024px) {
-  .hero-content { grid-template-columns: 1fr; gap: 48px; }
-  .hero-visual { display: none; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
-  .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
-}
-
-@media (max-width: 768px) {
-  .section { padding: 64px 0; }
-  .navbar-nav { display: none; }
-  .navbar-cta { display: none; }
-  .navbar-toggle { display: flex; }
-  .form-row { grid-template-columns: 1fr; }
-  .form-row-3 { grid-template-columns: 1fr; }
-  .hero-stats { gap: 16px; flex-wrap: wrap; }
-  .programs-grid { grid-template-columns: 1fr; }
-  .startups-grid { grid-template-columns: 1fr; }
-  .news-grid { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .cta-actions { flex-direction: column; align-items: center; }
-  .cohort-open-banner { flex-direction: column; text-align: center; }
-  .progress-steps { overflow-x: auto; }
-  .home-about-grid,
-  .about-story-grid,
-  .contact-main-grid,
-  .news-featured-grid,
-  .article-layout,
-  .startup-main-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .home-about-pillars,
-  .about-story-stats,
-  .contact-quick-links,
-  .track-meta-grid,
-  .program-row-benefits {
-    grid-template-columns: 1fr !important;
-  }
-  .program-row {
-    grid-template-columns: 1fr !important;
-    padding: 24px !important;
-    gap: 24px !important;
-  }
-  .home-feature-header,
-  .home-news-header {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 16px !important;
-  }
-  .article-sidebar,
-  .startup-sidebar {
-    position: static !important;
-    top: auto !important;
-  }
-  .startup-metrics-bar {
-    flex-wrap: wrap;
-  }
-  .startup-metrics-bar > div {
-    min-width: 50%;
-    border-right: none !important;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .startup-founder-card {
-    flex-direction: column;
-    gap: 16px !important;
-  }
-  .startup-related-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .filter-search {
-    min-width: 100%;
-  }
-  .filter-select,
-  .filter-bar .btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .team-grid { grid-template-columns: 1fr; }
-  .hero-actions { flex-direction: column; }
-}
 
 /* ============================================================
    ABOUT PAGE SPECIFIC

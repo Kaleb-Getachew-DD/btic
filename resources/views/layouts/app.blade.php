@@ -14,8 +14,18 @@
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    @php
+        $viteManifest = public_path('build/manifest.json');
+    @endphp
+
     {{-- App CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @if(file_exists($viteManifest))
+        @vite(['resources/css/app.css'])
+    @else
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/page-layout.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    @endif
 
     @stack('styles')
 </head>
@@ -73,7 +83,15 @@
     @include('components.footer')
 
     {{-- App JS --}}
-    <script src="{{ asset('js/app.js') }}"></script>
+    @if(file_exists($viteManifest))
+        @vite(['resources/js/app.js'])
+    @else
+        <script src="{{ asset('js/modules/navigation.js') }}"></script>
+        <script src="{{ asset('js/modules/effects.js') }}"></script>
+        <script src="{{ asset('js/modules/forms.js') }}"></script>
+        <script src="{{ asset('js/modules/hero-carousel.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+    @endif
     @stack('scripts')
 </body>
 </html>

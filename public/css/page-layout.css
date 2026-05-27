@@ -1,0 +1,24 @@
+/* Shared layout helpers for public pages */
+.home-about-grid,
+.about-story-grid,
+.contact-main-grid,
+.news-featured-grid,
+.article-layout,
+.startup-main-grid {
+  width: 100%;
+}
+
+.home-about-pillars,
+.about-story-stats,
+.contact-quick-links,
+.track-meta-grid {
+  width: 100%;
+}
+
+.program-row-benefits {
+  width: 100%;
+}
+
+.startup-related-item {
+  text-decoration: none;
+}
