@@ -17,7 +17,7 @@
 
 <section class="section section-light">
     <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start;">
+        <div class="contact-main-grid" style="display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start;">
 
             {{-- Contact Info --}}
             <div>
@@ -28,7 +28,7 @@
                     Whether you're a startup founder, investor, corporate partner, or student — our team is ready to answer your questions.
                 </p>
 
-                <div style="display:flex;flex-direction:column;gap:20px;">
+                <div class="contact-info-list" style="display:flex;flex-direction:column;gap:20px;">
                     @php
                         $contacts = [
                             ['icon'=>'fa-map-marker-alt','label'=>'Address','value'=>\App\Models\Setting::get('contact_address','Dire Dawa University, P.O. Box 1362, Dire Dawa, Ethiopia')],
@@ -129,7 +129,7 @@
         </div>
 
         {{-- Quick Links --}}
-        <div style="margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="contact-quick-links" style="margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
             @php
                 $quickLinks = [
                     ['icon'=>'fa-paper-plane','title'=>'Apply for Incubation','desc'=>'Ready to join BTIC? Submit your startup application today.','link'=>route('apply.create'),'label'=>'Apply Now'],

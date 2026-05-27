@@ -248,7 +248,7 @@
 {{-- ===== ABOUT SNIPPET ===== --}}
 <section class="section section-light">
     <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+        <div class="home-about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
             <div>
                 <div class="section-tag"><i class="fas fa-info-circle"></i> About DDU BTIC</div>
                 <h2 class="text-headline" style="margin-bottom:20px;">
@@ -274,7 +274,7 @@
                     </a>
                 </div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="home-about-pillars" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                 @php
                     $pillars = [
                         ['icon'=>'fa-lightbulb','title'=>'Idea Validation','desc'=>'Structured frameworks to test and refine your concept.'],
@@ -342,7 +342,7 @@
 {{-- ===== FEATURED STARTUPS ===== --}}
 <section class="section section-light">
     <div class="container">
-        <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;max-width:none;margin-bottom:40px;">
+        <div class="section-header home-feature-header" style="display:flex;align-items:flex-end;justify-content:space-between;max-width:none;margin-bottom:40px;">
             <div>
                 <div class="section-tag"><i class="fas fa-rocket"></i> Portfolio</div>
                 <h2 class="text-headline">Featured Startups</h2>
@@ -461,7 +461,7 @@
 {{-- ===== NEWS ===== --}}
 <section class="section section-light">
     <div class="container">
-        <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;max-width:none;margin-bottom:40px;">
+        <div class="section-header home-news-header" style="display:flex;align-items:flex-end;justify-content:space-between;max-width:none;margin-bottom:40px;">
             <div>
                 <div class="section-tag"><i class="fas fa-newspaper"></i> Latest News</div>
                 <h2 class="text-headline">Stories from the Ecosystem</h2>

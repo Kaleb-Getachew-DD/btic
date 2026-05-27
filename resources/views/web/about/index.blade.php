@@ -19,7 +19,7 @@
 {{-- About Story --}}
 <section class="section">
     <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px;">
+        <div class="about-story-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px;">
             <div>
                 <div class="section-tag"><i class="fas fa-history"></i> Our Story</div>
                 <h2 class="text-headline" style="margin-bottom:20px;">Building Tomorrow's Economy, Today</h2>
@@ -34,7 +34,7 @@
                     Backed by Dire Dawa University's academic resources, research infrastructure, and a world-class mentor network, BTIC provides founders with everything they need from first idea to international scale.
                 </p>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="about-story-stats" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                 @php
                     $cards = [
                         ['num'=>'60+','label'=>'Startups Incubated','icon'=>'fa-rocket','color'=>'var(--crimson)'],

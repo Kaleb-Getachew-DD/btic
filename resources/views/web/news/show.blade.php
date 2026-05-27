@@ -64,7 +64,7 @@
 {{-- Content --}}
 <section class="section">
     <div style="max-width:860px;margin:0 auto;padding:0 24px;">
-        <div style="display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start;">
+        <div class="article-layout" style="display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start;">
             {{-- Article Body --}}
             <div>
                 @if($article->excerpt)
@@ -101,7 +101,7 @@
             </div>
 
             {{-- Sidebar --}}
-            <div style="position:sticky;top:96px;">
+            <div class="article-sidebar" style="position:sticky;top:96px;">
                 {{-- Author Card --}}
                 <div style="background:white;border:1px solid var(--light-gray);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-sm);margin-bottom:20px;text-align:center;">
                     <div style="width:70px;height:70px;background:linear-gradient(135deg,var(--crimson),var(--navy));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:white;margin:0 auto 14px;">

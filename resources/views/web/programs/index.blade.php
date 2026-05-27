@@ -26,11 +26,11 @@
             <p class="text-lead">Our programs are designed to meet you where you are and take you where you want to go.</p>
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:32px;">
+        <div class="programs-list" style="display:flex;flex-direction:column;gap:32px;">
             @foreach($programs as $i => $program)
-            <div style="display:grid;grid-template-columns:{{ $i % 2 === 0 ? '1fr 2fr' : '2fr 1fr' }};gap:40px;align-items:center;background:white;border:1px solid var(--light-gray);border-radius:var(--radius-xl);padding:40px;box-shadow:var(--shadow-sm);transition:var(--transition);" class="program-card">
+            <div class="program-card program-row" style="display:grid;grid-template-columns:{{ $i % 2 === 0 ? '1fr 2fr' : '2fr 1fr' }};gap:40px;align-items:center;background:white;border:1px solid var(--light-gray);border-radius:var(--radius-xl);padding:40px;box-shadow:var(--shadow-sm);transition:var(--transition);">
                 @if($i % 2 === 0)
-                <div style="text-align:center;">
+                <div class="program-row-icon" style="text-align:center;">
                     <div style="width:120px;height:120px;background:linear-gradient(135deg,var(--crimson),var(--navy));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 20px 40px rgba(26,74,158,0.25);">
                         <i class="fas {{ $program->icon ?? 'fa-rocket' }}" style="font-size:3rem;color:white;"></i>
                     </div>
@@ -51,7 +51,7 @@
                     </div>
                     @endif
                     @if($program->benefits && count($program->benefits) > 0)
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                    <div class="program-row-benefits" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                         @foreach($program->benefits as $benefit)
                         <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--text-body);">
                             <i class="fas fa-check-circle" style="color:var(--gold);flex-shrink:0;"></i>
@@ -65,7 +65,7 @@
                     </a>
                 </div>
                 @if($i % 2 !== 0)
-                <div style="text-align:center;">
+                <div class="program-row-icon" style="text-align:center;">
                     <div style="width:120px;height:120px;background:linear-gradient(135deg,var(--navy),var(--crimson));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 20px 40px rgba(26,74,158,0.25);">
                         <i class="fas {{ $program->icon ?? 'fa-rocket' }}" style="font-size:3rem;color:white;"></i>
                     </div>

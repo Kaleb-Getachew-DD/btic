@@ -49,7 +49,7 @@
 
         {{-- Key Metrics Bar --}}
         @if($startup->metrics && count($startup->metrics) > 0)
-        <div style="margin-top:40px;display:flex;gap:0;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);overflow:hidden;backdrop-filter:blur(10px);">
+        <div class="startup-metrics-bar" style="margin-top:40px;display:flex;gap:0;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);overflow:hidden;backdrop-filter:blur(10px);">
             @foreach($startup->metrics as $key => $value)
             <div style="flex:1;padding:20px 24px;border-right:1px solid rgba(255,255,255,0.1);text-align:center;">
                 <div style="font-family:var(--font-display);font-size:1.75rem;font-weight:800;color:var(--gold);line-height:1;">{{ $value }}</div>
@@ -65,7 +65,7 @@
 {{-- Main Content --}}
 <section class="section">
     <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start;">
+        <div class="startup-main-grid" style="display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start;">
 
             {{-- Left --}}
             <div>
@@ -102,7 +102,7 @@
                 <div style="margin-bottom:40px;">
                     <div class="section-tag"><i class="fas fa-user"></i> Founder</div>
                     <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:20px;color:var(--text-dark);">Meet the Founder</h2>
-                    <div style="display:flex;gap:24px;align-items:flex-start;background:white;border:1px solid var(--light-gray);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-sm);">
+                    <div class="startup-founder-card" style="display:flex;gap:24px;align-items:flex-start;background:white;border:1px solid var(--light-gray);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-sm);">
                         <div style="flex-shrink:0;">
                             @if($startup->founder_photo)
                                 <img src="{{ asset('storage/'.$startup->founder_photo) }}" alt="{{ $startup->founder_name }}"
@@ -130,9 +130,9 @@
                 @if($related->count() > 0)
                 <div>
                     <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:20px;color:var(--text-dark);">More {{ $startup->sector }} Startups</h2>
-                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;">
+                    <div class="startup-related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;">
                         @foreach($related as $rel)
-                        <a href="{{ route('startups.show',$rel->slug) }}" style="background:white;border:1px solid var(--light-gray);border-radius:var(--radius-lg);padding:20px;display:flex;align-items:center;gap:14px;transition:var(--transition);" class="startup-card" style="padding:0;border:none;">
+                        <a href="{{ route('startups.show',$rel->slug) }}" class="startup-card startup-related-item" style="background:white;border:1px solid var(--light-gray);border-radius:var(--radius-lg);padding:20px;display:flex;align-items:center;gap:14px;transition:var(--transition);">
                             <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--crimson));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:white;font-family:var(--font-display);flex-shrink:0;">
                                 {{ strtoupper(substr($rel->name,0,2)) }}
                             </div>
@@ -148,7 +148,7 @@
             </div>
 
             {{-- Right Sidebar --}}
-            <div style="position:sticky;top:96px;">
+            <div class="startup-sidebar" style="position:sticky;top:96px;">
                 {{-- Contact Card --}}
                 <div style="background:white;border:1px solid var(--light-gray);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px;">
                     <div style="background:linear-gradient(135deg,var(--crimson),var(--crimson-dark));padding:20px 24px;color:white;">

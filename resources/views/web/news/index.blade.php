@@ -24,7 +24,7 @@
         @if($featured->count() > 0 && !request()->hasAny(['search','category']))
         <div style="margin-bottom:56px;">
             <div class="section-tag" style="margin-bottom:20px;"><i class="fas fa-star"></i> Featured</div>
-            <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;">
+            <div class="news-featured-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:24px;">
                 @php $mainFeatured = $featured->first(); $sideFeatured = $featured->skip(1); @endphp
                 <a href="{{ route('news.show',$mainFeatured->slug) }}" style="background:white;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--light-gray);transition:var(--transition);display:block;" class="news-card">
                     <div style="height:280px;background:linear-gradient(135deg,var(--navy),var(--crimson));position:relative;overflow:hidden;">
@@ -43,7 +43,7 @@
                         <div style="margin-top:16px;font-size:0.85rem;font-weight:600;color:var(--crimson);">Read Full Story →</div>
                     </div>
                 </a>
-                <div style="display:flex;flex-direction:column;gap:16px;">
+                <div class="news-featured-side" style="display:flex;flex-direction:column;gap:16px;">
                     @foreach($sideFeatured as $article)
                     <a href="{{ route('news.show',$article->slug) }}" class="news-card" style="flex:1;display:flex;flex-direction:column;">
                         <div class="news-card-img" style="height:130px;flex-shrink:0;">

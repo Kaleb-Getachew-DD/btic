@@ -86,7 +86,7 @@
                     </span>
                 </div>
 
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+                <div class="track-meta-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
                     <div style="padding:14px;background:var(--off-white);border-radius:var(--radius-md);">
                         <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;color:var(--mid-gray);margin-bottom:4px;">Cohort</div>
                         <div style="font-weight:700;color:var(--text-dark);">{{ $application->cohort->name ?? '—' }}</div>
