@@ -31,11 +31,15 @@ class HomeController extends Controller
         $partners = Partner::active()->get();
         $partnershipTitle = Setting::get('partnership_title', 'Our Partners & Collaborators');
         $partnershipSubtitle = Setting::get('partnership_subtitle', 'Working together with leading institutions and organizations to build Ethiopia\'s innovation ecosystem.');
+        $presidentName = Setting::get('president_name', '');
+        $presidentTitle = Setting::get('president_title', 'Our University President');
+        $presidentImage = Setting::assetUrl('president_image');
 
         return view('web.home.index', compact(
             'featuredStartups', 'latestNews', 'programs', 'services',
             'teamMembers', 'openCohort', 'stats', 'partners',
-            'partnershipTitle', 'partnershipSubtitle'
+            'partnershipTitle', 'partnershipSubtitle',
+            'presidentName', 'presidentTitle', 'presidentImage'
         ));
     }
 }

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'initActiveNavLinks',
     'initSmoothScroll',
     'initRevealAnimations',
+    'initPresidentPortraitReveal',
     'initHeroParallax',
     'initCounterAnimation',
     'initAlertAutoDismiss',

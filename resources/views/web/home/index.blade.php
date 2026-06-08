@@ -331,24 +331,28 @@
                     </a>
                 </div>
             </div>
-            <div class="home-about-pillars" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-                @php
-                    $pillars = [
-                        ['icon'=>'fa-lightbulb','title'=>'Idea Validation','desc'=>'Structured frameworks to test and refine your concept.'],
-                        ['icon'=>'fa-code','title'=>'Product Development','desc'=>'Tech labs and expert guidance to build your MVP.'],
-                        ['icon'=>'fa-coins','title'=>'Funding Access','desc'=>'Seed grants and investor introductions.'],
-                        ['icon'=>'fa-users','title'=>'Mentorship','desc'=>'200+ mentors from business, tech, and academia.'],
-                    ];
-                @endphp
-                @foreach($pillars as $pillar)
-                <div style="background:white;border-radius:var(--radius-lg);padding:24px;border:1px solid var(--light-gray);transition:var(--transition);" class="program-card">
-                    <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--navy-dark));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-                        <i class="fas {{ $pillar['icon'] }}" style="color:white;font-size:1.2rem;"></i>
+            <div class="president-portrait" id="presidentPortrait" aria-label="University President">
+                <div class="president-portrait__frame">
+                    <div class="president-portrait__glow"></div>
+                    <div class="president-portrait__image-wrap">
+                        @if($presidentImage)
+                            <img src="{{ $presidentImage }}"
+                                 alt="{{ $presidentName ?: 'University President' }}"
+                                 class="president-portrait__image"
+                                 loading="lazy">
+                        @else
+                            <div class="president-portrait__placeholder" aria-hidden="true">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                        @endif
+                        <div class="president-portrait__accent president-portrait__accent--tl"></div>
+                        <div class="president-portrait__accent president-portrait__accent--br"></div>
                     </div>
-                    <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;color:var(--text-dark);">{{ $pillar['title'] }}</h4>
-                    <p style="font-size:0.82rem;color:var(--text-body);line-height:1.6;">{{ $pillar['desc'] }}</p>
                 </div>
-                @endforeach
+                @if($presidentName)
+                    <h3 class="president-portrait__name">{{ $presidentName }}</h3>
+                @endif
+                <p class="president-portrait__title">{{ $presidentTitle }}</p>
             </div>
         </div>
     </div>

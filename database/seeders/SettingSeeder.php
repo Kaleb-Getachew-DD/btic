@@ -40,6 +40,9 @@ class SettingSeeder extends Seeder
             ['key'=>'university_url',   'value'=>'',                                             'type'=>'text',      'group'=>'branding', 'label'=>'University Website URL'],
             ['key'=>'partnership_title', 'value'=>'Our Partners & Collaborators',                'type'=>'text',      'group'=>'partnerships', 'label'=>'Partnership Section Title'],
             ['key'=>'partnership_subtitle', 'value'=>'Working together with leading institutions and organizations to build Ethiopia\'s innovation ecosystem.', 'type'=>'textarea', 'group'=>'partnerships', 'label'=>'Partnership Section Subtitle'],
+            ['key'=>'president_image',  'value'=>'',                                             'type'=>'image',    'group'=>'about', 'label'=>'University President Portrait'],
+            ['key'=>'president_name',   'value'=>'',                                             'type'=>'text',      'group'=>'about', 'label'=>'University President Name'],
+            ['key'=>'president_title',  'value'=>'Our University President',                     'type'=>'text',      'group'=>'about', 'label'=>'President Title Label'],
         ];
 
         foreach ($settings as $s) {

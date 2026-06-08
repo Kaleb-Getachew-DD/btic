@@ -27,6 +27,7 @@ class SettingController extends Controller
             'footer_text', 'google_analytics_id',
             'university_name', 'university_subtitle', 'university_url',
             'partnership_title', 'partnership_subtitle',
+            'president_name', 'president_title',
         ];
 
         foreach ($fields as $field) {
@@ -55,6 +56,14 @@ class SettingController extends Controller
             if ($old) Storage::disk('public')->delete($old);
             $path = $request->file('university_logo')->store('settings', 'public');
             Setting::set('university_logo', $path);
+        }
+
+        // Handle president portrait upload
+        if ($request->hasFile('president_image')) {
+            $old = Setting::get('president_image');
+            if ($old) Storage::disk('public')->delete($old);
+            $path = $request->file('president_image')->store('settings/president', 'public');
+            Setting::set('president_image', $path);
         }
 
         // Hero slides (JSON + images)

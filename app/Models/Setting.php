@@ -65,6 +65,9 @@ class Setting extends Model
             'university_url' => 'University Website URL',
             'partnership_title' => 'Partnership Section Title',
             'partnership_subtitle' => 'Partnership Section Subtitle',
+            'president_image' => 'University President Portrait',
+            'president_name' => 'University President Name',
+            'president_title' => 'President Title Label',
             'contact_email' => 'Contact Email',
             'contact_phone' => 'Contact Phone',
             'contact_address' => 'Address',
@@ -87,7 +90,7 @@ class Setting extends Model
         ];
 
         $type = match (true) {
-            in_array($key, ['site_logo', 'site_favicon', 'university_logo'], true) => 'image',
+            in_array($key, ['site_logo', 'site_favicon', 'university_logo', 'president_image'], true) => 'image',
             in_array($key, ['site_description', 'contact_address', 'hero_subtitle', 'mission_statement', 'vision_statement', 'about_short'], true) => 'textarea',
             in_array($key, ['hero_slides'], true) => 'json',
             default => 'text',
@@ -101,7 +104,7 @@ class Setting extends Model
             str_starts_with($key, 'hero_') => 'hero',
             str_starts_with($key, 'stats_') => 'stats',
             in_array($key, ['footer_text', 'google_analytics_id'], true) => 'footer',
-            in_array($key, ['about_short', 'mission_statement', 'vision_statement'], true) => 'about',
+            in_array($key, ['about_short', 'mission_statement', 'vision_statement', 'president_image', 'president_name', 'president_title'], true) => 'about',
             default => 'general',
         };
 

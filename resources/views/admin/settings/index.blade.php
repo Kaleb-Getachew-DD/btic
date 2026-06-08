@@ -19,6 +19,7 @@
             <div class="settings-nav-item" data-tab="tab-contact"><i class="fas fa-envelope"></i> Contact</div>
             <div class="settings-nav-item" data-tab="tab-social"><i class="fas fa-share-alt"></i> Social Media</div>
             <div class="settings-nav-item" data-tab="tab-branding"><i class="fas fa-palette"></i> Branding</div>
+            <div class="settings-nav-item" data-tab="tab-about"><i class="fas fa-user-tie"></i> About Section</div>
             <div class="settings-nav-item" data-tab="tab-partnerships"><i class="fas fa-handshake"></i> Partnerships</div>
         </div>
 
@@ -266,6 +267,52 @@
                             <div class="form-group">
                                 <label class="form-label">University Website URL</label>
                                 <input type="url" name="university_url" class="form-control" value="{{ ($settings['university_url'] ?? null)?->value ?? '' }}" placeholder="https://www.ddu.edu.et">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:16px;"><button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button></div>
+            </div>
+
+            {{-- About Tab --}}
+            <div id="tab-about" class="settings-tab" style="display:none;">
+                <div class="admin-form-section">
+                    <div class="admin-form-section-header">
+                        <div class="admin-form-section-icon"><i class="fas fa-user-tie"></i></div>
+                        <div class="admin-form-section-title">Homepage About — University President</div>
+                    </div>
+                    <div class="admin-form-section-body">
+                        <div class="form-hint" style="margin-bottom:16px;">
+                            The portrait appears on the right side of the About section on the homepage.
+                            Use a high-quality portrait photo (recommended: 600×800px or similar portrait ratio).
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">President Portrait</label>
+                            @if(($settings['president_image'] ?? null)?->value)
+                                <img src="{{ asset('storage/'.($settings['president_image']->value)) }}"
+                                     alt="President portrait preview"
+                                     style="max-height:220px;border-radius:12px;border:1px solid var(--border);margin-bottom:12px;object-fit:cover;">
+                            @endif
+                            <div class="image-upload-area" onclick="this.querySelector('input').click()">
+                                <input type="file" name="president_image" accept="image/*" style="display:none;">
+                                <div class="image-upload-icon"><i class="fas fa-portrait"></i></div>
+                                <div class="image-upload-text">Upload president portrait</div>
+                                <div class="image-upload-sub">PNG, JPG — portrait orientation recommended</div>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">President Name</label>
+                                <input type="text" name="president_name" class="form-control"
+                                       value="{{ ($settings['president_name'] ?? null)?->value ?? '' }}"
+                                       placeholder="e.g. Dr. John Smith">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Title Label</label>
+                                <input type="text" name="president_title" class="form-control"
+                                       value="{{ ($settings['president_title'] ?? null)?->value ?? 'Our University President' }}"
+                                       placeholder="Our University President">
+                                <div class="form-hint">Shown below the president's name</div>
                             </div>
                         </div>
                     </div>

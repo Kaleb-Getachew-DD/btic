@@ -1,5 +1,28 @@
 window.BticInit = window.BticInit || {};
 
+window.BticInit.initPresidentPortraitReveal = function initPresidentPortraitReveal() {
+  const portrait = document.getElementById('presidentPortrait');
+  if (!portrait) return;
+
+  if (!('IntersectionObserver' in window)) {
+    portrait.classList.add('is-visible');
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.25, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  observer.observe(portrait);
+};
+
 window.BticInit.initRevealAnimations = function initRevealAnimations() {
   const animateElements = document.querySelectorAll(
     '.program-card, .startup-card, .news-card, .service-card, .team-card, .stat-item, .value-card'
