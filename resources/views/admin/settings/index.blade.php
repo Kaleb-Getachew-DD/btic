@@ -19,6 +19,7 @@
             <div class="settings-nav-item" data-tab="tab-contact"><i class="fas fa-envelope"></i> Contact</div>
             <div class="settings-nav-item" data-tab="tab-social"><i class="fas fa-share-alt"></i> Social Media</div>
             <div class="settings-nav-item" data-tab="tab-branding"><i class="fas fa-palette"></i> Branding</div>
+            <div class="settings-nav-item" data-tab="tab-partnerships"><i class="fas fa-handshake"></i> Partnerships</div>
         </div>
 
         <div>
@@ -215,7 +216,7 @@
                             <div class="form-group">
                                 <label class="form-label">Site Logo</label>
                                 @if($settings['site_logo']->value ?? null)
-                                    <img src="{{ asset('storage/'.($settings['site_logo']->value)) }}" alt="Logo" style="height:60px;margin-bottom:10px;border:1px solid var(--border);border-radius:6px;padding:8px;">
+                                    <img src="{{ asset('storage/'.($settings['site_logo']->value)) }}" alt="Logo" style="height:60px;margin-bottom:10px;border:1px solid var(--border);border-radius:6px;object-fit:cover;">
                                 @endif
                                 <div class="image-upload-area" onclick="this.querySelector('input').click()">
                                     <input type="file" name="site_logo" accept="image/*" style="display:none;">
@@ -233,6 +234,64 @@
                                     <div class="image-upload-sub">ICO, PNG — 32×32px</div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div style="height:20px;"></div>
+                        <div class="detail-section-title">DDU Dire Dawa University Badge</div>
+                        <div class="form-hint" style="margin-bottom:12px;">
+                            Circle logo shown in the website header (replaces Apply Now) and hero section.
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">University Logo</label>
+                                @if(($settings['university_logo'] ?? null)?->value)
+                                    <img src="{{ asset('storage/'.($settings['university_logo']->value)) }}" alt="University Logo" style="width:80px;height:80px;margin-bottom:10px;border:1px solid var(--border);border-radius:50%;object-fit:cover;">
+                                @endif
+                                <div class="image-upload-area" onclick="this.querySelector('input').click()">
+                                    <input type="file" name="university_logo" accept="image/*" style="display:none;">
+                                    <div class="image-upload-icon"><i class="fas fa-university"></i></div>
+                                    <div class="image-upload-text">Upload university logo</div>
+                                    <div class="image-upload-sub">PNG, JPG — square recommended</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Badge Abbreviation</label>
+                                <input type="text" name="university_name" class="form-control" value="{{ ($settings['university_name'] ?? null)?->value ?? 'DDU' }}" placeholder="DDU">
+                                <div class="form-hint">Shown when no logo image is uploaded</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">University Name</label>
+                                <input type="text" name="university_subtitle" class="form-control" value="{{ ($settings['university_subtitle'] ?? null)?->value ?? 'Dire Dawa University' }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">University Website URL</label>
+                                <input type="url" name="university_url" class="form-control" value="{{ ($settings['university_url'] ?? null)?->value ?? '' }}" placeholder="https://www.ddu.edu.et">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:16px;"><button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button></div>
+            </div>
+
+            {{-- Partnerships Tab --}}
+            <div id="tab-partnerships" class="settings-tab" style="display:none;">
+                <div class="admin-form-section">
+                    <div class="admin-form-section-header">
+                        <div class="admin-form-section-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="admin-form-section-title">Partnership Section</div>
+                    </div>
+                    <div class="admin-form-section-body">
+                        <div class="form-group">
+                            <label class="form-label">Section Title</label>
+                            <input type="text" name="partnership_title" class="form-control" value="{{ ($settings['partnership_title'] ?? null)?->value ?? 'Our Partners & Collaborators' }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Section Subtitle</label>
+                            <textarea name="partnership_subtitle" class="form-control" rows="3">{{ ($settings['partnership_subtitle'] ?? null)?->value ?? '' }}</textarea>
+                        </div>
+                        <div class="form-hint">
+                            Manage individual partner logos from
+                            <a href="{{ route('admin.partners.index') }}">Partners & Collaborators</a>.
                         </div>
                     </div>
                 </div>

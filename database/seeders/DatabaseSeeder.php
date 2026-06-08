@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             ProgramSeeder::class,
             ServiceSeeder::class,
             TeamSeeder::class,
+            PartnerSeeder::class,
             StartupSeeder::class,
             NewsSeeder::class,
         ]);

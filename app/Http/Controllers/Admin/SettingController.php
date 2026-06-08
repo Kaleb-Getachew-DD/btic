@@ -25,6 +25,8 @@ class SettingController extends Controller
             'about_short', 'mission_statement', 'vision_statement',
             'stats_startups', 'stats_cohorts', 'stats_jobs', 'stats_funding',
             'footer_text', 'google_analytics_id',
+            'university_name', 'university_subtitle', 'university_url',
+            'partnership_title', 'partnership_subtitle',
         ];
 
         foreach ($fields as $field) {
@@ -45,6 +47,14 @@ class SettingController extends Controller
         if ($request->hasFile('site_favicon')) {
             $path = $request->file('site_favicon')->store('settings', 'public');
             Setting::set('site_favicon', $path);
+        }
+
+        // Handle university logo upload
+        if ($request->hasFile('university_logo')) {
+            $old = Setting::get('university_logo');
+            if ($old) Storage::disk('public')->delete($old);
+            $path = $request->file('university_logo')->store('settings', 'public');
+            Setting::set('university_logo', $path);
         }
 
         // Hero slides (JSON + images)

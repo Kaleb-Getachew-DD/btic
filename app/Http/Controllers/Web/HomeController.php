@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Startup;
 use App\Models\TeamMember;
+use App\Models\Partner;
 
 class HomeController extends Controller
 {
@@ -27,10 +28,14 @@ class HomeController extends Controller
             'jobs'     => Setting::get('stats_jobs', '200+'),
             'funding'  => Setting::get('stats_funding', '$500K+'),
         ];
+        $partners = Partner::active()->get();
+        $partnershipTitle = Setting::get('partnership_title', 'Our Partners & Collaborators');
+        $partnershipSubtitle = Setting::get('partnership_subtitle', 'Working together with leading institutions and organizations to build Ethiopia\'s innovation ecosystem.');
 
         return view('web.home.index', compact(
             'featuredStartups', 'latestNews', 'programs', 'services',
-            'teamMembers', 'openCohort', 'stats'
+            'teamMembers', 'openCohort', 'stats', 'partners',
+            'partnershipTitle', 'partnershipSubtitle'
         ));
     }
 }

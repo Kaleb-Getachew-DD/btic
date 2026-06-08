@@ -1191,9 +1191,9 @@ select.form-control { cursor: pointer; }
 
 /* CMS-uploaded site logo (admin) */
 .site-logo-img {
-  object-fit: contain;
+  object-fit: cover;
   background: #fff;
-  padding: 4px;
+  padding: 0;
   display: block;
   flex-shrink: 0;
 }

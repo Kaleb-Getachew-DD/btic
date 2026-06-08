@@ -249,17 +249,8 @@
                 </button>
             </div>
 
-            {{-- Floating DDU Badge --}}
-            <div class="btic-hero__ddu-badge">
-                <div class="btic-hero__ddu-badge-ring"></div>
-                <div class="btic-hero__ddu-badge-inner">
-                    <div class="btic-hero__ddu-badge-logo">DDU</div>
-                    <div class="btic-hero__ddu-badge-text">
-                        <span>Official</span>
-                        <span>Incubator</span>
-                    </div>
-                </div>
-            </div>
+            {{-- Floating DDU University Badge --}}
+            <!-- <x-university-badge variant="hero" /> -->
 
             {{-- Floating Stat Cards --}}
             <div class="btic-hero__float-card btic-hero__float-card--1">
@@ -362,6 +353,95 @@
         </div>
     </div>
 </section>
+
+{{-- ===== PARTNERSHIPS ===== --}}
+@if($partners->count() > 0)
+<section class="section partnerships-section" id="partnershipsSection">
+    <div class="container">
+        <div class="section-header centered">
+            <div class="section-tag"><i class="fas fa-handshake"></i> Partnerships</div>
+            <h2 class="text-headline">{{ $partnershipTitle }}</h2>
+            <p class="text-lead">{{ $partnershipSubtitle }}</p>
+        </div>
+
+        <div class="partners-marquee" aria-label="Partner logos">
+            <div class="partners-marquee__fade partners-marquee__fade--left"></div>
+            <div class="partners-marquee__fade partners-marquee__fade--right"></div>
+            <div class="partners-marquee__track" id="partnersMarqueeTrack">
+                @foreach([1, 2] as $loopSet)
+                    @foreach($partners as $partner)
+                    <div class="partners-marquee__item" data-partner-id="{{ $partner->id }}">
+                        @if($partner->website_url)
+                        <a href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer" class="partners-marquee__logo-link" aria-label="{{ $partner->name }}">
+                        @else
+                        <div class="partners-marquee__logo-link partners-marquee__logo-link--static">
+                        @endif
+                            <div class="partners-marquee__logo">
+                                @if($partner->logo)
+                                    <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}">
+                                @else
+                                    <span class="partners-marquee__initial">{{ strtoupper(substr($partner->name, 0, 2)) }}</span>
+                                @endif
+                            </div>
+                        @if($partner->website_url)
+                        </a>
+                        @else
+                        </div>
+                        @endif
+                        <span class="partners-marquee__name">{{ $partner->name }}</span>
+                    </div>
+                    @endforeach
+                @endforeach
+            </div>
+        </div>
+
+        <div style="text-align:center;margin-top:40px;">
+            <button type="button" class="btn btn-primary" id="partnersLearnMoreBtn">
+                <i class="fas fa-cubes"></i> Learn More
+            </button>
+        </div>
+    </div>
+</section>
+
+<div class="partners-modal" id="partnersModal" aria-hidden="true">
+    <div class="partners-modal__backdrop" id="partnersModalBackdrop"></div>
+    <div class="partners-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="partnersModalTitle">
+        <button type="button" class="partners-modal__close" id="partnersModalClose" aria-label="Close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="partners-modal__header">
+            <div class="section-tag"><i class="fas fa-handshake"></i> Our Partners</div>
+            <h2 class="text-headline" id="partnersModalTitle">{{ $partnershipTitle }}</h2>
+            <p class="text-lead">{{ $partnershipSubtitle }}</p>
+        </div>
+        <div class="partners-modal__stage" id="partnersModalStage">
+            @foreach($partners as $partner)
+            <article class="partners-modal__card" data-tilt>
+                <div class="partners-modal__card-glow"></div>
+                <div class="partners-modal__card-inner">
+                    <div class="partners-modal__card-logo">
+                        @if($partner->logo)
+                            <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}">
+                        @else
+                            <span>{{ strtoupper(substr($partner->name, 0, 2)) }}</span>
+                        @endif
+                    </div>
+                    <h3 class="partners-modal__card-name">{{ $partner->name }}</h3>
+                    @if($partner->description)
+                        <p class="partners-modal__card-desc">{{ $partner->description }}</p>
+                    @endif
+                    @if($partner->website_url)
+                        <a href="{{ $partner->website_url }}" class="partners-modal__card-link" target="_blank" rel="noopener noreferrer">
+                            Visit Website <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    @endif
+                </div>
+            </article>
+            @endforeach
+        </div>
+    </div>
+</div>
+@endif
 
 {{-- ===== PROGRAMS ===== --}}
 <section class="section">

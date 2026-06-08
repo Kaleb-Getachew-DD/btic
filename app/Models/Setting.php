@@ -59,6 +59,12 @@ class Setting extends Model
             'site_description' => 'Site Description',
             'site_logo' => 'Site Logo',
             'site_favicon' => 'Site Favicon',
+            'university_logo' => 'University Logo',
+            'university_name' => 'University Badge Abbreviation',
+            'university_subtitle' => 'University Name',
+            'university_url' => 'University Website URL',
+            'partnership_title' => 'Partnership Section Title',
+            'partnership_subtitle' => 'Partnership Section Subtitle',
             'contact_email' => 'Contact Email',
             'contact_phone' => 'Contact Phone',
             'contact_address' => 'Address',
@@ -81,14 +87,15 @@ class Setting extends Model
         ];
 
         $type = match (true) {
-            in_array($key, ['site_logo', 'site_favicon'], true) => 'image',
+            in_array($key, ['site_logo', 'site_favicon', 'university_logo'], true) => 'image',
             in_array($key, ['site_description', 'contact_address', 'hero_subtitle', 'mission_statement', 'vision_statement', 'about_short'], true) => 'textarea',
             in_array($key, ['hero_slides'], true) => 'json',
             default => 'text',
         };
 
         $group = match (true) {
-            in_array($key, ['site_logo', 'site_favicon'], true) => 'branding',
+            in_array($key, ['site_logo', 'site_favicon', 'university_logo', 'university_name', 'university_subtitle', 'university_url'], true) => 'branding',
+            in_array($key, ['partnership_title', 'partnership_subtitle'], true) => 'partnerships',
             str_starts_with($key, 'contact_') => 'contact',
             str_ends_with($key, '_url') => 'social',
             str_starts_with($key, 'hero_') => 'hero',

@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'initValidation',
     'initMultiStepForm',
     'initHeroCarousel',
+    'initPartners',
   ].forEach((fnName) => {
     if (typeof init[fnName] === 'function') init[fnName]();
   });

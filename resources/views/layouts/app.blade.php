@@ -90,6 +90,7 @@
         <script src="{{ asset('js/modules/effects.js') }}"></script>
         <script src="{{ asset('js/modules/forms.js') }}"></script>
         <script src="{{ asset('js/modules/hero-carousel.js') }}"></script>
+        <script src="{{ asset('js/modules/partners.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
     @endif
     @stack('scripts')

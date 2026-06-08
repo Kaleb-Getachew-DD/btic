@@ -34,6 +34,12 @@ class SettingSeeder extends Seeder
             ['key'=>'footer_text',      'value'=>'© ' . date('Y') . ' Dire Dawa University BTIC. All rights reserved.', 'type'=>'text', 'group'=>'footer', 'label'=>'Footer Text'],
             ['key'=>'site_logo',        'value'=>'',                                             'type'=>'image',    'group'=>'branding', 'label'=>'Site Logo'],
             ['key'=>'site_favicon',     'value'=>'',                                             'type'=>'image',    'group'=>'branding', 'label'=>'Site Favicon'],
+            ['key'=>'university_logo',  'value'=>'',                                             'type'=>'image',    'group'=>'branding', 'label'=>'University Logo'],
+            ['key'=>'university_name',  'value'=>'DDU',                                          'type'=>'text',      'group'=>'branding', 'label'=>'University Badge Abbreviation'],
+            ['key'=>'university_subtitle', 'value'=>'Dire Dawa University',                      'type'=>'text',      'group'=>'branding', 'label'=>'University Name'],
+            ['key'=>'university_url',   'value'=>'',                                             'type'=>'text',      'group'=>'branding', 'label'=>'University Website URL'],
+            ['key'=>'partnership_title', 'value'=>'Our Partners & Collaborators',                'type'=>'text',      'group'=>'partnerships', 'label'=>'Partnership Section Title'],
+            ['key'=>'partnership_subtitle', 'value'=>'Working together with leading institutions and organizations to build Ethiopia\'s innovation ecosystem.', 'type'=>'textarea', 'group'=>'partnerships', 'label'=>'Partnership Section Subtitle'],
         ];
 
         foreach ($settings as $s) {

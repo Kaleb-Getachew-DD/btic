@@ -19,9 +19,7 @@
         </ul>
 
         <div class="navbar-cta">
-            <a href="{{ route('apply.create') }}" class="btn btn-primary btn-sm">
-                <i class="fas fa-paper-plane"></i> Apply Now
-            </a>
+            <x-university-badge variant="navbar" :animated="false" />
         </div>
 
         <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle menu">

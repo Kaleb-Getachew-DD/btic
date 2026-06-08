@@ -59,6 +59,10 @@
                 <i class="fas fa-users sidebar-icon"></i>
                 Team Members
             </a>
+            <a href="{{ route('admin.partners.index') }}" class="sidebar-link">
+                <i class="fas fa-handshake sidebar-icon"></i>
+                Partners
+            </a>
         </div>
 
         <div class="sidebar-group">

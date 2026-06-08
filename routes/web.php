@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\ForgotPasswordController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PasswordResetRequestController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PartnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +113,9 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.guard', 'prevent.cach
 
         // Team Members
         Route::resource('team', TeamController::class);
+
+        // Partners
+        Route::resource('partners', PartnerController::class)->except(['show']);
 
         // Cohorts
         Route::resource('cohorts', CohortController::class);
