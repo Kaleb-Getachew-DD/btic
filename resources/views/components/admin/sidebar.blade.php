@@ -118,7 +118,7 @@
         <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
             <button type="submit" class="sidebar-user" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;">
-                <div class="sidebar-user-avatar" style="background:linear-gradient(135deg,#EF4444,#DC2626);">
+                <div class="sidebar-user-avatar" style="background:linear-gradient(135deg,#1D409A,#142D6E);">
                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                 </div>
                 <div>

@@ -208,8 +208,8 @@ function initDashboardCharts() {
         labels: Object.keys(data).map(k => k.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())),
         datasets: [{
           data: Object.values(data),
-          backgroundColor: ['#FEF3C7','#DBEAFE','#EDE9FE','#D1FAE5','#FEE2E2','#F3F4F6'],
-          borderColor:     ['#F59E0B','#3B82F6','#8B5CF6','#10B981','#EF4444','#9CA3AF'],
+          backgroundColor: ['#FEF8CC','rgba(29,64,154,0.12)','#F3EDE3','#D4EDD8','rgba(29,64,154,0.08)','#FAFAF8'],
+          borderColor:     ['#FCD91D','#1D409A','#C4A574','#2E8B3C','#142D6E','#5A6B8C'],
           borderWidth: 2,
         }]
       },
@@ -234,8 +234,8 @@ function initDashboardCharts() {
         datasets: [{
           label: 'Applications',
           data: Object.values(data),
-          backgroundColor: 'rgba(140,29,53,0.15)',
-          borderColor: '#8C1D35',
+          backgroundColor: 'rgba(29,64,154,0.15)',
+          borderColor: '#1D409A',
           borderWidth: 2,
           borderRadius: 6,
         }]
@@ -244,7 +244,7 @@ function initDashboardCharts() {
         responsive: true,
         plugins: { legend: { display: false } },
         scales: {
-          y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#F1F5F9' } },
+          y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#F3EDE3' } },
           x: { grid: { display: false } }
         }
       }

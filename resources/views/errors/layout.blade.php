@@ -7,18 +7,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --blue: #1a4a9e;
-            --yellow: #ffde00;
-            --tan: #d7b58c;
-            --green: #2e8b57;
-            --brown: #a07844;
-            --white: #ffffff;
+            --blue: #1D409A;
+            --yellow: #FCD91D;
+            --tan: #C4A574;
+            --green: #2E8B3C;
+            --brown: #A07844;
+            --white: #FFFFFF;
             --black: #000000;
             --crimson: var(--blue);
             --gold: var(--yellow);
             --navy: var(--blue);
             --text: var(--black);
-            --muted: var(--brown);
+            --muted: #2C3E6B;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -36,7 +36,7 @@
             width: 100%;
             background: var(--white);
             border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(26, 74, 158, 0.12);
+            box-shadow: 0 20px 60px rgba(29, 64, 154, 0.12);
             overflow: hidden;
             text-align: center;
         }
@@ -93,7 +93,7 @@
         .btn-primary {
             background: var(--crimson);
             color: var(--white);
-            box-shadow: 0 4px 14px rgba(26, 74, 158, 0.35);
+            box-shadow: 0 4px 14px rgba(29, 64, 154, 0.35);
         }
         .btn-secondary {
             background: var(--tan);
