@@ -142,8 +142,19 @@ window.BticInit.initHeroCarousel = function initHeroCarousel() {
     });
   };
 
+  const resetCardTilt = (card) => {
+    const inner = card.querySelector('.btic-hero__card-inner');
+    if (inner) inner.style.transform = '';
+  };
+
+  const clearExpandedState = () => {
+    stage.classList.remove('btic-hero__stage--expanded');
+    cards.forEach(resetCardTilt);
+  };
+
   const goToSlide = (nextIndex) => {
     if (nextIndex === currentSlide) return;
+    clearExpandedState();
     currentSlide = nextIndex;
     applyPositions();
     updateText();
@@ -211,12 +222,44 @@ window.BticInit.initHeroCarousel = function initHeroCarousel() {
     });
   });
 
+  const initHeroCardHover = () => {
+    cards.forEach((card) => {
+      const inner = card.querySelector('.btic-hero__card-inner');
+      if (!inner) return;
+
+      card.addEventListener('mouseenter', () => {
+        if (card.getAttribute('data-pos') === '0') {
+          stage.classList.add('btic-hero__stage--expanded');
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (card.getAttribute('data-pos') === '0') {
+          stage.classList.remove('btic-hero__stage--expanded');
+        }
+        resetCardTilt(card);
+      });
+
+      card.addEventListener('mousemove', (event) => {
+        if (card.getAttribute('data-pos') !== '0') return;
+        if (window.matchMedia('(max-width: 768px)').matches) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        inner.style.transform = `rotateY(${x * 14}deg) rotateX(${y * -10}deg)`;
+      });
+    });
+  };
+
   cards.forEach((card, index) => {
     card.addEventListener('click', () => {
       goToSlide(index);
       restartAutoPlay();
     });
   });
+
+  initHeroCardHover();
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowRight') {

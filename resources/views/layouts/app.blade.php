@@ -36,25 +36,25 @@
 
     {{-- Mobile Menu --}}
     <div class="mobile-menu" id="mobileMenu">
-        <a href="{{ route('home') }}" class="mobile-nav-link">
+        <a href="{{ route('home') }}" class="mobile-nav-link{{ request()->routeIs('home') ? ' active' : '' }}">
             <i class="fas fa-home"></i> Home
         </a>
-        <a href="{{ route('about') }}" class="mobile-nav-link">
+        <a href="{{ route('about') }}" class="mobile-nav-link{{ request()->routeIs('about') ? ' active' : '' }}">
             <i class="fas fa-info-circle"></i> About Us
         </a>
-        <a href="{{ route('programs.index') }}" class="mobile-nav-link">
+        <a href="{{ route('programs.index') }}" class="mobile-nav-link{{ request()->routeIs('programs.*') ? ' active' : '' }}">
             <i class="fas fa-rocket"></i> Programs & Services
         </a>
-        <a href="{{ route('startups.index') }}" class="mobile-nav-link">
+        <a href="{{ route('startups.index') }}" class="mobile-nav-link{{ request()->routeIs('startups.*') ? ' active' : '' }}">
             <i class="fas fa-lightbulb"></i> Startups
         </a>
-        <a href="{{ route('news.index') }}" class="mobile-nav-link">
+        <a href="{{ route('news.index') }}" class="mobile-nav-link{{ request()->routeIs('news.*') ? ' active' : '' }}">
             <i class="fas fa-newspaper"></i> News
         </a>
-        <a href="{{ route('contact.index') }}" class="mobile-nav-link">
+        <a href="{{ route('contact.index') }}" class="mobile-nav-link{{ request()->routeIs('contact.*') ? ' active' : '' }}">
             <i class="fas fa-envelope"></i> Contact
         </a>
-        <a href="{{ route('apply.track') }}" class="mobile-nav-link">
+        <a href="{{ route('apply.track') }}" class="mobile-nav-link{{ request()->routeIs('apply.track*') ? ' active' : '' }}">
             <i class="fas fa-search"></i> Track Application
         </a>
         <div style="padding: 24px 16px;">

@@ -47,10 +47,31 @@ window.BticInit.initMobileMenu = function initMobileMenu() {
 };
 
 window.BticInit.initActiveNavLinks = function initActiveNavLinks() {
+  const normalizePath = (href) => {
+    try {
+      return new URL(href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
+    } catch {
+      return (href || '').replace(/\/+$/, '') || '/';
+    }
+  };
+
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+
   document.querySelectorAll('.nav-link, .mobile-nav-link').forEach((link) => {
-    const href = (link.getAttribute('href') || '').replace(/\/+$/, '') || '/';
-    if (href === currentPath) link.classList.add('active');
+    if (link.classList.contains('active')) return;
+
+    const linkPath = normalizePath(link.getAttribute('href') || '');
+    let isActive = false;
+
+    if (linkPath === '/') {
+      isActive = currentPath === '/';
+    } else if (linkPath === '/apply/track') {
+      isActive = currentPath === '/apply/track';
+    } else {
+      isActive = currentPath === linkPath || currentPath.startsWith(`${linkPath}/`);
+    }
+
+    if (isActive) link.classList.add('active');
   });
 };
 

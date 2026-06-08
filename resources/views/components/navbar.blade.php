@@ -9,13 +9,13 @@
         </a>
 
         <ul class="navbar-nav">
-            <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-            <li><a href="{{ route('about') }}" class="nav-link">About</a></li>
-            <li><a href="{{ route('programs.index') }}" class="nav-link">Programs</a></li>
-            <li><a href="{{ route('startups.index') }}" class="nav-link">Startups</a></li>
-            <li><a href="{{ route('news.index') }}" class="nav-link">News</a></li>
-            <li><a href="{{ route('contact.index') }}" class="nav-link">Contact</a></li>
-            <li><a href="{{ route('apply.track') }}" class="nav-link">Track Application</a></li>
+            <li><a href="{{ route('home') }}" class="nav-link{{ request()->routeIs('home') ? ' active' : '' }}">Home</a></li>
+            <li><a href="{{ route('about') }}" class="nav-link{{ request()->routeIs('about') ? ' active' : '' }}">About</a></li>
+            <li><a href="{{ route('programs.index') }}" class="nav-link{{ request()->routeIs('programs.*') ? ' active' : '' }}">Programs</a></li>
+            <li><a href="{{ route('startups.index') }}" class="nav-link{{ request()->routeIs('startups.*') ? ' active' : '' }}">Startups</a></li>
+            <li><a href="{{ route('news.index') }}" class="nav-link{{ request()->routeIs('news.*') ? ' active' : '' }}">News</a></li>
+            <li><a href="{{ route('contact.index') }}" class="nav-link{{ request()->routeIs('contact.*') ? ' active' : '' }}">Contact</a></li>
+            <li><a href="{{ route('apply.track') }}" class="nav-link{{ request()->routeIs('apply.track*') ? ' active' : '' }}">Track Application</a></li>
         </ul>
 
         <div class="navbar-cta">
